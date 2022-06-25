@@ -12,15 +12,13 @@
 
     include_once('../koneksi.php');
 
+    // query
     $kriterias = mysqli_query($koneksi, "SELECT * FROM kriteria");
-    $alternatifs = mysqli_query($koneksi, "SELECT * FROM alternatif");
     $converts = mysqli_query($koneksi, "SELECT * FROM convert_alternatif");
-
-    $convertss = mysqli_query($koneksi, "SELECT * FROM convert_alternatif");
-    $convertsss = mysqli_query($koneksi, "SELECT * FROM convert_alternatif");
-
-    // $rangking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi DESC");
+    // $convertss = mysqli_query($koneksi, "SELECT * FROM convert_alternatif");
+    // $convertsss = mysqli_query($koneksi, "SELECT * FROM convert_alternatif");
     
+    $rangking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi DESC");
 
 
     // new
@@ -28,40 +26,21 @@
     $joinss = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
     $joinsss = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
 
-    // $fetchs = mysqli_query($koneksi, "SELECT * FROM fetch_api");
-    // $idd = mysqli_num_rows($fetchs);
-    // global $idd;
-
-
-
-
 
     // untuk pengkondisian tambah, update t.convert & t.rangking
+    $totalId = 10;
     $r = mysqli_query($koneksi, "SELECT * FROM rangking");
-    $w = mysqli_num_rows($alternatifs);
     $ww = mysqli_num_rows($converts);
     $www = mysqli_num_rows($r);
-    global $w;
     global $ww;
     global $www;
 
 
-    $rangking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi DESC");
-    // $noo = mysqli_query($koneksi, "SELECT no_alternatif as no_al_rank FROM rangking");
-    // $noa = mysqli_fetch_array($noo);
-
+    // bobot
     $bobots = mysqli_query($koneksi, "SELECT bobot_kriteria FROM kriteria");
-    // $bb = mysqli_fetch_array($bobots);
-    // var_dump($bb[1]);
-    // echo $bobots;
-    // var_dump($bb[5]);
-
-
+    
     $bobot = array();
     foreach($bobots as $bo) {
-        // var_dump($bo['bobot_kriteria']);
-        // $bbot = $bo['bobot_kriteria'];
-        // echo $bbot . '<br>';
 
         array_push($bobot, $bo['bobot_kriteria']);
         
@@ -73,11 +52,10 @@
     // echo $bobot[4] . '<br>';
     // echo $bobot[5] . '<br>';
     // echo $bobot[6] . '<br>';
-
-
     
     // $bobot = [20,20,15,10,10,10,15]; // bobot sebelumnya
 
+    // nilai min dan max tabel convert alternatif
     $nMax = mysqli_query($koneksi, "SELECT max(kriteria1) as maxK1, max(kriteria2) as maxK2, max(kriteria3) as maxK3, max(kriteria7) as maxK7 FROM convert_alternatif");
     $nMin = mysqli_query($koneksi, "SELECT min(kriteria4) as minK4, min(kriteria5) as minK5, min(kriteria6) as minK6 FROM convert_alternatif");
     $max = mysqli_fetch_array($nMax);
@@ -312,7 +290,7 @@
                                             </tr>
                                         ";
 
-                                        $totalId = 2;
+                                        // $totalId = 10;
                                         $iii = $join['id_api']; //id alternatif tabel alternatif
                                         // global $iii;
                                         // while($d = mysqli_fetch_array($conver)) { // id alternatif tabel convert alternatif
@@ -592,9 +570,9 @@
 
                                         
                                         $iiii = $join['id_api'];
-                                        // $namaProduk = $alternatif['nama_produk'];
-                                        // $kriteria1 = $alternatif['kriteria1'];
-                                        $totalId = 2;
+                                        $namaProduk = $join['namaProduk'];
+                                        $kriteria1 = $join['mi'];
+                                        // $totalId = 10;
                                         
                                         // $updateNilaiPreferensi = mysqli_query($koneksi, "UPDATE rangking SET nilai_preferensi = '$nilaiPreferensi' WHERE no_alternatif = '$no_al';");
                                         // $w = mysqli_num_rows($alternatifs);
@@ -608,6 +586,7 @@
                                         // }
 
                                         // jika ada nomor alternatif makan update data jika tidak ada maka tambah data ke t.rangking
+                                        
 
 
                                         echo "
@@ -621,7 +600,7 @@
                                         // echo '<br>';
                                         if($totalId == $www) {
                                             // echo '1';
-                                            $updateNilaiPreferensi = mysqli_query($koneksi, "UPDATE rangking SET nilai_preferensi = '$nilaiPreferensi' WHERE id_api = '$iiii';");
+                                            $updateNilaiPreferensi = mysqli_query($koneksi, "UPDATE rangking SET nama_produk = '$namaProduk', kriteria1 = '$kriteria1', nilai_preferensi = '$nilaiPreferensi' WHERE id_api = '$iiii';");
                                         } 
                                         // else if($w < $www) {
                                         //     $hapusDataNilaiPreferensi = mysqli_query($koneksi, "DELETE FROM rangking WHERE no_alternatif = '$no_al'");
@@ -692,13 +671,8 @@
                         </thead>
                         <tbody>
                             <?php
-                                // $rangking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi DESC");
                                 $i = 1;
                                 foreach($rangking as $rank) {
-                                    // for($i=1; $i<5;$i++) {
-                                    //     global $i;
-                                    // }
-                                    // $i++;
 
                                     echo "
                                         <tr>
@@ -713,8 +687,6 @@
                                 }
                                 
                             ?>
-                            
-                            
                         </tbody>
                     </table>
                 </div>

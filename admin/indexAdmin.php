@@ -12,44 +12,31 @@
     // koneksi
     include_once('../koneksi.php');
 
+    // query tabel kriteria
     $kriterias = mysqli_query($koneksi, "SELECT * FROM kriteria");
-    // $alternatifs = mysqli_query($koneksi, "SELECT * FROM alternatif");
-    $alternatifs = mysqli_query($koneksi, "SELECT * FROM alternatif ORDER BY no_alternatif ASC");
 
     // query untuk greeting atau ucapan selamat datang di dasboard
     $ucapan = mysqli_query($koneksi, "SELECT * FROM login WHERE username = 'admin'");
 
-    
+    // query tabel fetch_api dan lama peluncuran
     $join = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
 
 
-
+    // mengambil jumlah data pada tabel fetch_api
     $fetchs = mysqli_query($koneksi, "SELECT * FROM fetch_api");
     $idd = mysqli_num_rows($fetchs);
     global $idd;
-    // echo $idd;
-    // $jj = 5;
-    // if($jj == $idd) {
-
-    //     echo '1';
-    // } else {
-    //     echo '0';
-    // }
+    
 
 
     // api
     // $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=35');
-    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=2');
-
+    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=10');
     $contents = utf8_encode($contents);
-
     $result = json_decode($contents, 1);
 
     // var_dump($result);
-
     $results = $result['data'];
-    
-    
 
 ?>
 
@@ -307,13 +294,13 @@
                             <?php
                                 foreach($results as $hasil) {
                                     // inisialisasi
-                                    $totalId = 2;
+                                    $totalId = 10;
                                     $id = $hasil['id'];
                                     $namaProduk = $hasil['name'];
 
                                     // kriteria
                                     $mi = $hasil['investment_manager']['name'];
-                                    $totalAum = round($hasil['aum']['value'] / 1000000000000, 2); // milyar
+                                    $totalAum = round($hasil['aum']['value'] / 1000000000000, 2); // triliun
                                     $cagr = round($hasil['cagr']['1y'] * 100, 2);
                                     $drawdown = round($hasil['maxdrawdown']['1y'] * 100, 2);
                                     $expenseRatio = round($hasil['expenseratio']['percentage'] * 100, 2);

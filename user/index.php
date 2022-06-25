@@ -14,7 +14,9 @@
     
 
     $kriterias = mysqli_query($koneksi, "SELECT * FROM kriteria");
-    $alternatifs = mysqli_query($koneksi, "SELECT * FROM alternatif ORDER BY no_alternatif ASC");
+    // $alternatifs = mysqli_query($koneksi, "SELECT * FROM alternatif ORDER BY no_alternatif ASC");
+
+    $join = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
 
     // query untuk greeting atau ucapan selamat datang di dasboard
     // $ucapan = mysqli_query($koneksi, "SELECT * FROM login WHERE username != 'admin'");
@@ -28,6 +30,30 @@
     // $tampilNamas = mysqli_query($koneksi, "SELECT * FROM login WHERE username='$user");
     // $tampilNama = mysqli_fetch_array($tampilNamas);
     // var_dump($user);
+
+
+
+    // new
+    foreach($results as $hasil) {
+        // inisialisasi
+        $totalId = 10;
+        $id = $hasil['id'];
+        $namaProduk = $hasil['name'];
+
+        // kriteria
+        $mi = $hasil['investment_manager']['name'];
+        $totalAum = round($hasil['aum']['value'] / 1000000000000, 2); // triliun
+        $cagr = round($hasil['cagr']['1y'] * 100, 2);
+        $drawdown = round($hasil['maxdrawdown']['1y'] * 100, 2);
+        $expenseRatio = round($hasil['expenseratio']['percentage'] * 100, 2);
+        $minBuy = $hasil['minbuy'];
+
+        if($totalId == $idd) {
+            // echo '1';
+            $updateTabelFetchAPI = mysqli_query($koneksi, "UPDATE fetch_api SET namaProduk = '$namaProduk',mi = '$mi', aum = '$totalAum', cagr = '$cagr', drawdown = '$drawdown', expense = '$expenseRatio', minbuy = '$minBuy' WHERE id_api = '$id';");
+        }
+
+    }
     
 ?>
 
@@ -212,28 +238,30 @@
                         </thead>
                         <tbody>
                             <?php
-                                foreach($alternatifs as $alternatif) {
+                                foreach($join as $fetch) {
+                                    
                                     echo "
                                     <tr>
-                                        <td class='center'>". $alternatif['no_alternatif'] ."</td>
-                                        <td>". $alternatif['nama_produk'] ."</td>
-                                        <td>". $alternatif['kriteria1'] ."</td>
-                                        <td class='center'>". $alternatif['kriteria2']." T</td>
-                                        <td class='center'>". $alternatif['kriteria3']."%</td>
-                                        <td class='center'>-". $alternatif['kriteria4']."%</td>
-                                        <td class='center'>". $alternatif['kriteria5']."%</td>
-                                        <td>Rp ". $alternatif['kriteria6']."</td>
-                                        <td style='width:150px;'>". round($alternatif['kriteria7'] / 12, 0)." Tahun, ".$alternatif['kriteria7'] % 12 ." Bulan</td>
+                                        <td class='center'>A". $fetch['id_api'] ."</td>
+                                        <td>". $fetch['namaProduk'] ."</td>
+                                        <td>". $fetch['mi'] ."</td>
+                                        <td class='center'>". $fetch['aum'] ." M</td>
+                                        <td class='center'>". $fetch['cagr'] ."%</td>
+                                        <td class='center'>". $fetch['drawdown'] ."%</td>
+                                        <td class='center'>". $fetch['expense'] ."%</td>
+                                        <td>Rp ". $fetch['minbuy'] ."</td>
+                                        <td style='width:150px;'>". round($fetch['lama_peluncuran'] / 12, 0)." Tahun, ".$fetch['lama_peluncuran'] % 12 ." Bulan</td>
                                     </tr>
                                     
                                     ";
+
                                 }
                             ?>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <span class="pesan-update">*Data diperbaharui terakhir tanggal 20 Mei 2022</span>
+            <span class="pesan-update">*Data up to date karena menggunakan Public API dari Bibit.</span>
         </div>
     </div>
     <!-- tabel alternatif -->
