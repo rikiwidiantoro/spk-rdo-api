@@ -39,8 +39,8 @@
 
 
     // new
+    $totalId = 17;
     $joins = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
-    $totalId = 10;
     
     // convert-alternatif
     foreach($joins as $join) {
@@ -80,15 +80,15 @@
         }
 
         // kriteria4 = dropdown 1 tahun = x4
-        if( $join['drawdown'] > 5 ) {
+        if( $join['drawdown'] > -5 ) {
             $x4 = 1;
-        } else if( $join['drawdown'] >= 3.01 && $join['drawdown'] <= 5 ) {
+        } else if( $join['drawdown'] >= -3.01 && $join['drawdown'] <= -5 ) {
             $x4 = 2;
-        } else if( $join['drawdown'] >= 2.01 && $join['drawdown'] <= 3 ) {
+        } else if( $join['drawdown'] >= -2.01 && $join['drawdown'] <= -3 ) {
             $x4 = 3;
-        } else if( $join['drawdown'] >= 1 && $join['drawdown'] <= 2 ) {
+        } else if( $join['drawdown'] >= -1 && $join['drawdown'] <= -2 ) {
             $x4 = 4;
-        } else if( $join['drawdown'] < 1 ) {
+        } else if( $join['drawdown'] < -1 ) {
             $x4 = 5;
         }
 
@@ -179,15 +179,15 @@
         }
 
         // kriteria4 = dropdown 1 tahun = x4
-        if( $join['drawdown'] > 5 ) {
+        if( $join['drawdown'] > -5 ) {
             $x4 = 1;
-        } else if( $join['drawdown'] >= 3.01 && $join['drawdown'] <= 5 ) {
+        } else if( $join['drawdown'] >= -3.01 && $join['drawdown'] <= -5 ) {
             $x4 = 2;
-        } else if( $join['drawdown'] >= 2.01 && $join['drawdown'] <= 3 ) {
+        } else if( $join['drawdown'] >= -2.01 && $join['drawdown'] <= -3 ) {
             $x4 = 3;
-        } else if( $join['drawdown'] >= 1 && $join['drawdown'] <= 2 ) {
+        } else if( $join['drawdown'] >= -1 && $join['drawdown'] <= -2 ) {
             $x4 = 4;
-        } else if( $join['drawdown'] < 1 ) {
+        } else if( $join['drawdown'] < -1 ) {
             $x4 = 5;
         }
 
@@ -241,29 +241,19 @@
         
         $iiii = $join['id_api'];
         // $totalId = 10;
+        $namaProduk = $join['namaProduk'];
+        $kriteria1 = $join['mi'];
         
 
         if($totalId == $www) {
             // echo '1';
-            $updateNilaiPreferensi = mysqli_query($koneksi, "UPDATE rangking SET nilai_preferensi = '$nilaiPreferensi' WHERE id_api = '$iiii';");
+            $updateNilaiPreferensi = mysqli_query($koneksi, "UPDATE rangking SET nama_produk = '$namaProduk', kriteria1 = '$kriteria1', nilai_preferensi = '$nilaiPreferensi' WHERE id_api = '$iiii';");
         }
     }
 
 
     $rangking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi DESC");
     $raking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi DESC LIMIT 5");
-    // $noo = mysqli_query($koneksi, "SELECT no_alternatif as no_al_rank FROM rangking");
-    // $noa = mysqli_fetch_array($noo);
-
-    
-    // $bobot = [20,20,15,10,10,10,15];
-    // $bobots = mysqli_query($koneksi, "SELECT bobot_kriteria");
-    // echo $bobots;
-
-    // $nMax = mysqli_query($koneksi, "SELECT max(kriteria1) as maxK1, max(kriteria2) as maxK2, max(kriteria3) as maxK3, max(kriteria7) as maxK7 FROM convert_alternatif");
-    // $nMin = mysqli_query($koneksi, "SELECT min(kriteria4) as minK4, min(kriteria5) as minK5, min(kriteria6) as minK6 FROM convert_alternatif");
-    // $max = mysqli_fetch_array($nMax);
-    // $min = mysqli_fetch_array($nMin);
 
 ?>
 

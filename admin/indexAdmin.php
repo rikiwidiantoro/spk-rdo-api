@@ -31,7 +31,7 @@
 
     // api
     // $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=35');
-    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=10');
+    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=17');
     $contents = utf8_encode($contents);
     $result = json_decode($contents, 1);
 
@@ -240,7 +240,7 @@
                                         <td class='center'>A". $fetch['id_api'] ."</td>
                                         <td>". $fetch['namaProduk'] ."</td>
                                         <td>". $fetch['mi'] ."</td>
-                                        <td class='center'>". $fetch['aum'] ." M</td>
+                                        <td class='center'>". $fetch['aum'] ." T</td>
                                         <td class='center'>". $fetch['cagr'] ."%</td>
                                         <td class='center'>". $fetch['drawdown'] ."%</td>
                                         <td class='center'>". $fetch['expense'] ."%</td>
@@ -270,7 +270,7 @@
         <div class="con">
             <div class="row">
                 <div class="col m8">
-                    <h5>Tabel Alternatif</h5>
+                    <h5>Tabel Alternatif Hasil Fetch API</h5>
                 </div>
             </div>
             <div class="row">
@@ -280,21 +280,19 @@
                             <tr>
                                 <th>Alternatif</th>
                                 <th>Nama Produk</th>
-                                <!-- pengulangan nama kriteria dari tabel kriteria -->
-                                <?php
-                                    foreach($kriterias as $kriteria) {
-                                        echo "
-                                            <th>". $kriteria['nama_kriteria'] ."</th>
-                                        ";
-                                    }
-                                ?>
+                                <th>Manager Investasi</th>
+                                <th>Total AUM</th>
+                                <th>CAGR</th>
+                                <th>Drawdown</th>
+                                <th>Expense Ratio</th>
+                                <th>Min Pembelian</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                                 foreach($results as $hasil) {
                                     // inisialisasi
-                                    $totalId = 10;
+                                    $totalId = 17;
                                     $id = $hasil['id'];
                                     $namaProduk = $hasil['name'];
 
@@ -312,7 +310,7 @@
                                         <td class='center'>". $id ."</td>
                                         <td>". $namaProduk ."</td>
                                         <td>". $mi ."</td>
-                                        <td class='center'>". $totalAum." M</td>
+                                        <td class='center'>". $totalAum." T</td>
                                         <td class='center'>". $cagr."%</td>
                                         <td class='center'>". $drawdown."%</td>
                                         <td class='center'>". $expenseRatio."%</td>

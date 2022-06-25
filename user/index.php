@@ -33,10 +33,27 @@
 
 
 
+    
+    // api
+    // $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=35');
+    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=17');
+    $contents = utf8_encode($contents);
+    $result = json_decode($contents, 1);
+
+    // var_dump($result);
+    $results = $result['data'];
+
+
+    // mengambil jumlah data pada tabel fetch_api
+    $fetchs = mysqli_query($koneksi, "SELECT * FROM fetch_api");
+    $idd = mysqli_num_rows($fetchs);
+    global $idd;
+
+
     // new
     foreach($results as $hasil) {
         // inisialisasi
-        $totalId = 10;
+        $totalId = 17;
         $id = $hasil['id'];
         $namaProduk = $hasil['name'];
 
@@ -245,7 +262,7 @@
                                         <td class='center'>A". $fetch['id_api'] ."</td>
                                         <td>". $fetch['namaProduk'] ."</td>
                                         <td>". $fetch['mi'] ."</td>
-                                        <td class='center'>". $fetch['aum'] ." M</td>
+                                        <td class='center'>". $fetch['aum'] ." T</td>
                                         <td class='center'>". $fetch['cagr'] ."%</td>
                                         <td class='center'>". $fetch['drawdown'] ."%</td>
                                         <td class='center'>". $fetch['expense'] ."%</td>

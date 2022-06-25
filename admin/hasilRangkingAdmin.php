@@ -28,7 +28,7 @@
 
 
     // untuk pengkondisian tambah, update t.convert & t.rangking
-    $totalId = 10;
+    $totalId = 17;
     $r = mysqli_query($koneksi, "SELECT * FROM rangking");
     $ww = mysqli_num_rows($converts);
     $www = mysqli_num_rows($r);
@@ -226,15 +226,15 @@
                                         }
                 
                                         // kriteria4 = dropdown 1 tahun = x4
-                                        if( $join['drawdown'] > 5 ) {
+                                        if( $join['drawdown'] < -5 ) {
                                             $x4 = 1;
-                                        } else if( $join['drawdown'] >= 3.01 && $join['drawdown'] <= 5 ) {
+                                        } else if( $join['drawdown'] <= -3.01 && $join['drawdown'] >= -5 ) {
                                             $x4 = 2;
-                                        } else if( $join['drawdown'] >= 2.01 && $join['drawdown'] <= 3 ) {
+                                        } else if( $join['drawdown'] <= -2.01 && $join['drawdown'] >= -3 ) {
                                             $x4 = 3;
-                                        } else if( $join['drawdown'] >= 1 && $join['drawdown'] <= 2 ) {
+                                        } else if( $join['drawdown'] <= -1 && $join['drawdown'] >= -2 ) {
                                             $x4 = 4;
-                                        } else if( $join['drawdown'] < 1 ) {
+                                        } else if( $join['drawdown'] <= 0 && $join['drawdown'] > -1 ) {
                                             $x4 = 5;
                                         }
                 
@@ -379,15 +379,15 @@
                                         }
                 
                                         // kriteria4 = dropdown 1 tahun = x4
-                                        if( $join['drawdown'] > 5 ) {
+                                        if( $join['drawdown'] < -5 ) {
                                             $x4 = 1;
-                                        } else if( $join['drawdown'] >= 3.01 && $join['drawdown'] <= 5 ) {
+                                        } else if( $join['drawdown'] <= -3.01 && $join['drawdown'] >= -5 ) {
                                             $x4 = 2;
-                                        } else if( $join['drawdown'] >= 2.01 && $join['drawdown'] <= 3 ) {
+                                        } else if( $join['drawdown'] <= -2.01 && $join['drawdown'] >= -3 ) {
                                             $x4 = 3;
-                                        } else if( $join['drawdown'] >= 1 && $join['drawdown'] <= 2 ) {
+                                        } else if( $join['drawdown'] <= -1 && $join['drawdown'] >= -2 ) {
                                             $x4 = 4;
-                                        } else if( $join['drawdown'] < 1 ) {
+                                        } else if( $join['drawdown'] <= 0 && $join['drawdown'] > -1 ) {
                                             $x4 = 5;
                                         }
                 
@@ -509,15 +509,26 @@
                                         }
                 
                                         // kriteria4 = dropdown 1 tahun = x4
-                                        if( $join['drawdown'] > 5 ) {
+                                        // if( $join['drawdown'] > -5 ) {
+                                        //     $x4 = 1;
+                                        // } else if( $join['drawdown'] >= -3.01 && $join['drawdown'] <= -5 ) {
+                                        //     $x4 = 2;
+                                        // } else if( $join['drawdown'] >= -2.01 && $join['drawdown'] <= -3 ) {
+                                        //     $x4 = 3;
+                                        // } else if( $join['drawdown'] >= -1 && $join['drawdown'] <= -2 ) {
+                                        //     $x4 = 4;
+                                        // } else if( $join['drawdown'] < -1 ) {
+                                        //     $x4 = 5;
+                                        // }
+                                        if( $join['drawdown'] < -5 ) {
                                             $x4 = 1;
-                                        } else if( $join['drawdown'] >= 3.01 && $join['drawdown'] <= 5 ) {
+                                        } else if( $join['drawdown'] <= -3.01 && $join['drawdown'] >= -5 ) {
                                             $x4 = 2;
-                                        } else if( $join['drawdown'] >= 2.01 && $join['drawdown'] <= 3 ) {
+                                        } else if( $join['drawdown'] <= -2.01 && $join['drawdown'] >= -3 ) {
                                             $x4 = 3;
-                                        } else if( $join['drawdown'] >= 1 && $join['drawdown'] <= 2 ) {
+                                        } else if( $join['drawdown'] <= -1 && $join['drawdown'] >= -2 ) {
                                             $x4 = 4;
-                                        } else if( $join['drawdown'] < 1 ) {
+                                        } else if( $join['drawdown'] <= 0 && $join['drawdown'] > -1 ) {
                                             $x4 = 5;
                                         }
                 
