@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 
     // session
     session_start();
@@ -31,7 +32,7 @@
 
     // api
     // $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=35');
-    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=17');
+    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=25');
     $contents = utf8_encode($contents);
     $result = json_decode($contents, 1);
 
@@ -245,7 +246,7 @@
                                         <td class='center'>". $fetch['drawdown'] ."%</td>
                                         <td class='center'>". $fetch['expense'] ."%</td>
                                         <td>Rp ". $fetch['minbuy'] ."</td>
-                                        <td style='width:150px;'>". round($fetch['lama_peluncuran'] / 12, 0)." Tahun, ".$fetch['lama_peluncuran'] % 12 ." Bulan</td>
+                                        <td style='width:150px;'>". round((int) $fetch['lama_peluncuran'] / 12, 0)." Tahun, ". (int) $fetch['lama_peluncuran'] % 12 ." Bulan</td>
                                     </tr>
                                     
                                     ";
@@ -265,7 +266,7 @@
 
 
     <hr>
-    <!-- tabel alternatif -->
+    <!-- tabel alternatif fetch api -->
     <div id="alternatif" class="alternatif">
         <div class="con">
             <div class="row">
@@ -292,7 +293,7 @@
                             <?php
                                 foreach($results as $hasil) {
                                     // inisialisasi
-                                    $totalId = 17;
+                                    $totalId = 25;
                                     $id = $hasil['id'];
                                     $namaProduk = $hasil['name'];
 

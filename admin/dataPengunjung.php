@@ -4,20 +4,6 @@
 
     $dataUsers = mysqli_query($koneksi, "SELECT * FROM login");
 
-    $angka = '0';
-
-
-    if($angka < -5 ) {
-        echo $x4 = 1;
-    } else if($angka <= -3.01 && $angka >= -5 ) {
-        echo $x4 = 2;
-    } else if($angka <= -2.01 && $angka >= -3 ) {
-        echo $x4 = 3;
-    } else if($angka <= -1 && $angka >= -2 ) {
-        echo $x4 = 4;
-    } else if($angka > -1) {
-        echo $x4 = 5;
-    }
 
 ?>
 

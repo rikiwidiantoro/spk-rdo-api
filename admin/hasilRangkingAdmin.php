@@ -28,7 +28,7 @@
 
 
     // untuk pengkondisian tambah, update t.convert & t.rangking
-    $totalId = 17;
+    $totalId = 25;
     $r = mysqli_query($koneksi, "SELECT * FROM rangking");
     $ww = mysqli_num_rows($converts);
     $www = mysqli_num_rows($r);
@@ -193,7 +193,7 @@
                                         // kriteria1 = manajer investasi = x1
                                         if( $join['mi'] == "Sucor Asset Management" || $join['mi'] == "Trimegah Asset Management" ) {
                                             $x1 = 5;
-                                        } else if( $join['mi'] == "Asset Management Sinarmas" || $join['mi'] == "Eastpring Investments" ) {
+                                        } else if( $join['mi'] == "Sinarmas Asset Management, PT" || $join['mi'] == "Eastspring Investments Indonesia, PT" ) {
                                             $x1 = 4;
                                         } else {
                                             $x1 = 3;
@@ -278,7 +278,7 @@
                 
                                         echo "
                                             <tr>
-                                                <td><b>". $join['id_api'] ."</b></td>
+                                                <td><b>A". $join['id_api'] ."</b></td>
                                                 <td>". $join['namaProduk'] ."</td>
                                                 <td>". $x1 ."</td>
                                                 <td>". $x2 ."</td>
@@ -346,7 +346,7 @@
                                         // kriteria1 = manajer investasi = x1
                                         if( $join['mi'] == "Sucor Asset Management" || $join['mi'] == "Trimegah Asset Management" ) {
                                             $x1 = 5;
-                                        } else if( $join['mi'] == "Asset Management Sinarmas" || $join['mi'] == "Eastpring Investments" ) {
+                                        } else if( $join['mi'] == "Sinarmas Asset Management, PT" || $join['mi'] == "Eastspring Investments Indonesia, PT" ) {
                                             $x1 = 4;
                                         } else {
                                             $x1 = 3;
@@ -430,7 +430,7 @@
 
                                         echo "
                                             <tr>
-                                                <td><b>". $join['id_api'] ."</b></td>
+                                                <td><b>A". $join['id_api'] ."</b></td>
                                                 <td>". round($x1 / $max['maxK1'],2)  ."</td>
                                                 <td>". round($x2 / $max['maxK2'],2)  ."</td>
                                                 <td>". round($x3 / $max['maxK3'],2)  ."</td>
@@ -476,7 +476,7 @@
                                         // kriteria1 = manajer investasi = x1
                                         if( $join['mi'] == "Sucor Asset Management" || $join['mi'] == "Trimegah Asset Management" ) {
                                             $x1 = 5;
-                                        } else if( $join['mi'] == "Asset Management Sinarmas" || $join['mi'] == "Eastpring Investments" ) {
+                                        } else if( $join['mi'] == "Sinarmas Asset Management, PT" || $join['mi'] == "Eastspring Investments Indonesia, PT" ) {
                                             $x1 = 4;
                                         } else {
                                             $x1 = 3;
@@ -602,7 +602,7 @@
 
                                         echo "
                                             <tr>
-                                                <td><b>". $join['id_api'] ."</b></td>
+                                                <td><b>A". $join['id_api'] ."</b></td>
                                                 <td>". $join['mi'] ."</td>
                                                 <td>". $nilaiPreferensi ."</td>
                                             </tr>
@@ -687,7 +687,7 @@
 
                                     echo "
                                         <tr>
-                                            <td><b>". $rank['id_api'] ."</b></td>
+                                            <td><b>A". $rank['id_api'] ."</b></td>
                                             <td>". $rank['nama_produk'] ."</td>
                                             <td>". $rank['kriteria1'] ."</td>
                                             <td>". $rank['nilai_preferensi'] ."</td>

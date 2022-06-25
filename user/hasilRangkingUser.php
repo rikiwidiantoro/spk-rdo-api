@@ -39,7 +39,7 @@
 
 
     // new
-    $totalId = 17;
+    $totalId = 25;
     $joins = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
     
     // convert-alternatif
@@ -47,7 +47,7 @@
         // kriteria1 = manajer investasi = x1
         if( $join['mi'] == "Sucor Asset Management" || $join['mi'] == "Trimegah Asset Management" ) {
             $x1 = 5;
-        } else if( $join['mi'] == "Asset Management Sinarmas" || $join['mi'] == "Eastpring Investments" ) {
+        } else if( $join['mi'] == "Sinarmas Asset Management, PT" || $join['mi'] == "Eastspring Investments Indonesia, PT" ) {
             $x1 = 4;
         } else {
             $x1 = 3;
@@ -80,15 +80,15 @@
         }
 
         // kriteria4 = dropdown 1 tahun = x4
-        if( $join['drawdown'] > -5 ) {
+        if( $join['drawdown'] < -5 ) {
             $x4 = 1;
-        } else if( $join['drawdown'] >= -3.01 && $join['drawdown'] <= -5 ) {
+        } else if( $join['drawdown'] <= -3.01 && $join['drawdown'] >= -5 ) {
             $x4 = 2;
-        } else if( $join['drawdown'] >= -2.01 && $join['drawdown'] <= -3 ) {
+        } else if( $join['drawdown'] <= -2.01 && $join['drawdown'] >= -3 ) {
             $x4 = 3;
-        } else if( $join['drawdown'] >= -1 && $join['drawdown'] <= -2 ) {
+        } else if( $join['drawdown'] <= -1 && $join['drawdown'] >= -2 ) {
             $x4 = 4;
-        } else if( $join['drawdown'] < -1 ) {
+        } else if( $join['drawdown'] <= 0 && $join['drawdown'] > -1 ) {
             $x4 = 5;
         }
 
@@ -146,7 +146,7 @@
         // kriteria1 = manajer investasi = x1
         if( $join['mi'] == "Sucor Asset Management" || $join['mi'] == "Trimegah Asset Management" ) {
             $x1 = 5;
-        } else if( $join['mi'] == "Asset Management Sinarmas" || $join['mi'] == "Eastpring Investments" ) {
+        } else if( $join['mi'] == "Sinarmas Asset Management, PT" || $join['mi'] == "Eastspring Investments Indonesia, PT" ) {
             $x1 = 4;
         } else {
             $x1 = 3;
@@ -179,15 +179,15 @@
         }
 
         // kriteria4 = dropdown 1 tahun = x4
-        if( $join['drawdown'] > -5 ) {
+        if( $join['drawdown'] < -5 ) {
             $x4 = 1;
-        } else if( $join['drawdown'] >= -3.01 && $join['drawdown'] <= -5 ) {
+        } else if( $join['drawdown'] <= -3.01 && $join['drawdown'] >= -5 ) {
             $x4 = 2;
-        } else if( $join['drawdown'] >= -2.01 && $join['drawdown'] <= -3 ) {
+        } else if( $join['drawdown'] <= -2.01 && $join['drawdown'] >= -3 ) {
             $x4 = 3;
-        } else if( $join['drawdown'] >= -1 && $join['drawdown'] <= -2 ) {
+        } else if( $join['drawdown'] <= -1 && $join['drawdown'] >= -2 ) {
             $x4 = 4;
-        } else if( $join['drawdown'] < -1 ) {
+        } else if( $join['drawdown'] <= 0 && $join['drawdown'] > -1 ) {
             $x4 = 5;
         }
 

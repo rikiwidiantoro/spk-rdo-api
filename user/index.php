@@ -1,6 +1,6 @@
 <!-- koneksi -->
 <?php
-
+    // error_reporting(0);
     // session
     session_start();
 
@@ -51,26 +51,30 @@
 
 
     // new
-    foreach($results as $hasil) {
-        // inisialisasi
-        $totalId = 17;
-        $id = $hasil['id'];
-        $namaProduk = $hasil['name'];
+    // foreach($results as $hasil) {
+    //     // inisialisasi
+    //     $totalId = 25;
+    //     $id = $hasil['id'];
+    //     $namaProduk = $hasil['name'];
 
-        // kriteria
-        $mi = $hasil['investment_manager']['name'];
-        $totalAum = round($hasil['aum']['value'] / 1000000000000, 2); // triliun
-        $cagr = round($hasil['cagr']['1y'] * 100, 2);
-        $drawdown = round($hasil['maxdrawdown']['1y'] * 100, 2);
-        $expenseRatio = round($hasil['expenseratio']['percentage'] * 100, 2);
-        $minBuy = $hasil['minbuy'];
+    //     // kriteria
+    //     $mi = $hasil['investment_manager']['name'];
+    //     if($mi == null) {
+    //         $mi = null;
+    //     }
+    //     $totalAum = round($hasil['aum']['value'] / 1000000000000, 2); // triliun
+    //     $cagr = round($hasil['cagr']['1y'] * 100, 2);
+    //     $drawdown = round($hasil['maxdrawdown']['1y'] * 100, 2);
+    //     $expenseRatio = round($hasil['expenseratio']['percentage'] * 100, 2);
+    //     $minBuy = $hasil['minbuy'];
 
-        if($totalId == $idd) {
-            // echo '1';
-            $updateTabelFetchAPI = mysqli_query($koneksi, "UPDATE fetch_api SET namaProduk = '$namaProduk',mi = '$mi', aum = '$totalAum', cagr = '$cagr', drawdown = '$drawdown', expense = '$expenseRatio', minbuy = '$minBuy' WHERE id_api = '$id';");
-        }
+    //     if($totalId == $idd) {
+    //         // echo '1';
+    //         $updateTabelFetchAPI = mysqli_query($koneksi, "UPDATE fetch_api SET namaProduk = '$namaProduk',mi = '$mi', aum = '$totalAum', cagr = '$cagr', drawdown = '$drawdown', expense = '$expenseRatio', minbuy = '$minBuy' WHERE id_api = '$id';");
+    //     }
 
-    }
+    // }
+
     
 ?>
 
@@ -256,7 +260,10 @@
                         <tbody>
                             <?php
                                 foreach($join as $fetch) {
-                                    
+                                    // $lama = $fetch['lama_peluncuran'];
+                                    // $jmlhBln = 12;
+                                    // $tahun = $lama / $jmlhBln;
+                                    // $bulan = $lama % $jmlhBln;
                                     echo "
                                     <tr>
                                         <td class='center'>A". $fetch['id_api'] ."</td>
@@ -267,7 +274,7 @@
                                         <td class='center'>". $fetch['drawdown'] ."%</td>
                                         <td class='center'>". $fetch['expense'] ."%</td>
                                         <td>Rp ". $fetch['minbuy'] ."</td>
-                                        <td style='width:150px;'>". round($fetch['lama_peluncuran'] / 12, 0)." Tahun, ".$fetch['lama_peluncuran'] % 12 ." Bulan</td>
+                                        <td style='width:150px;'>".  round((int) $fetch['lama_peluncuran'] / 12)." Tahun, ". (int) $fetch['lama_peluncuran'] % 12 ." Bulan</td>
                                     </tr>
                                     
                                     ";
@@ -338,13 +345,8 @@
             // $('.ucapanSelamat h4 span').html(namaUser);
             
 
-            $('#tabelAlternatif').DataTable({
-                // paging: false
-                // dom: '<"top"i>rt<"bottom"flp><"clear">',
-            });
-            $('#tabelKriteria').DataTable({
-                // paging: false
-            });
+            $('#tabelAlternatif').DataTable();
+            $('#tabelKriteria').DataTable();
 
 
             // sidenav
