@@ -250,7 +250,7 @@
                                     
                                     echo "
                                     <tr>
-                                        <td class='center'>". $fetch['id_api'] ."</td>
+                                        <td class='center'>A". $fetch['id_api'] ."</td>
                                         <td>". $fetch['namaProduk'] ."</td>
                                         <td>". $fetch['mi'] ."</td>
                                         <td class='center'>". $fetch['aum'] ." M</td>
@@ -270,7 +270,7 @@
                     </table>
                 </div>
             </div>
-            <span class="pesan-update">*Data diperbaharui terakhir tanggal 20 Mei 2022</span>
+            <span class="pesan-update">*Data up to date karena menggunakan Public API dari Bibit.</span>
         </div>
     </div>
     <!-- tabel alternatif -->
@@ -313,7 +313,7 @@
 
                                     // kriteria
                                     $mi = $hasil['investment_manager']['name'];
-                                    $totalAum = round($hasil['aum']['value'] / 1000000000, 2); // milyar
+                                    $totalAum = round($hasil['aum']['value'] / 1000000000000, 2); // milyar
                                     $cagr = round($hasil['cagr']['1y'] * 100, 2);
                                     $drawdown = round($hasil['maxdrawdown']['1y'] * 100, 2);
                                     $expenseRatio = round($hasil['expenseratio']['percentage'] * 100, 2);
@@ -338,17 +338,7 @@
                                         $updateTabelFetchAPI = mysqli_query($koneksi, "UPDATE fetch_api SET namaProduk = '$namaProduk',mi = '$mi', aum = '$totalAum', cagr = '$cagr', drawdown = '$drawdown', expense = '$expenseRatio', minbuy = '$minBuy' WHERE id_api = '$id';");
                                     }
 
-                                    // $jmlh = array($id);
                                 }
-                                // echo count($jmlh);
-                                // if($id == $idd) {
-                                //     // echo '1';
-                                //     $updateTabelFetchAPI = mysqli_query($koneksi, "UPDATE fetch_api SET mi = '$mi', aum = '$totalAum', cagr = '$cagr', drawdown = '$drawdown', expense = '$expenseRatio', minbuy = '$minBuy' WHERE id_api = '$id';");
-                                // }
-                                // if($idd < $id) {
-                                //     $tambahTabelFetchAPI = mysqli_query($koneksi, "INSERT INTO `fetch_api`(`id`, `id_api`, `mi`, `aum`, `cagr`, `drawdown`, `expense`, `minbuy`) VALUES('', '$id', '$mi', '$totalAum', '$cagr', '$drawdown', '$expenseRatio', '$minBuy');");
-                                //     //  WHERE no_alternatif = '$iii'
-                                // }
                             ?>
                         </tbody>
                     </table>

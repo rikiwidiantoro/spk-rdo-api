@@ -22,6 +22,20 @@
     // $rangking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi DESC");
     
 
+
+    // new
+    $joins = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
+    $joinss = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
+    $joinsss = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
+
+    // $fetchs = mysqli_query($koneksi, "SELECT * FROM fetch_api");
+    // $idd = mysqli_num_rows($fetchs);
+    // global $idd;
+
+
+
+
+
     // untuk pengkondisian tambah, update t.convert & t.rangking
     $r = mysqli_query($koneksi, "SELECT * FROM rangking");
     $w = mysqli_num_rows($alternatifs);
@@ -197,97 +211,97 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    foreach($alternatifs as $alternatif) {
+                                    foreach($joins as $join) {
                                         // kriteria1 = manajer investasi = x1
-                                        if( $alternatif['kriteria1'] == "Sucor Asset Management" || $alternatif['kriteria1'] == "Trimegah Asset Management" ) {
+                                        if( $join['mi'] == "Sucor Asset Management" || $join['mi'] == "Trimegah Asset Management" ) {
                                             $x1 = 5;
-                                        } else if( $alternatif['kriteria1'] == "Asset Management Sinarmas" || $alternatif['kriteria1'] == "Eastpring Investments" ) {
+                                        } else if( $join['mi'] == "Asset Management Sinarmas" || $join['mi'] == "Eastpring Investments" ) {
                                             $x1 = 4;
                                         } else {
                                             $x1 = 3;
                                         }
                 
                                         // kriteria2 = total AUM = x2
-                                        if( $alternatif['kriteria2'] > 1 ) {
+                                        if( $join['aum'] > 1 ) {
                                             $x2 = 5;
-                                        } else if( $alternatif['kriteria2'] >= 0.50001 && $alternatif['kriteria2'] <= 1 ) {
+                                        } else if( $join['aum'] >= 0.50001 && $join['aum'] <= 1 ) {
                                             $x2 = 4;
-                                        } else if( $alternatif['kriteria2'] >= 0.20001 && $alternatif['kriteria2'] <= 0.500 ) {
+                                        } else if( $join['aum'] >= 0.20001 && $join['aum'] <= 0.500 ) {
                                             $x2 = 3;
-                                        } else if( $alternatif['kriteria2'] >= 0.050 && $alternatif['kriteria2'] <= 0.200 ) {
+                                        } else if( $join['aum'] >= 0.050 && $join['aum'] <= 0.200 ) {
                                             $x2 = 2;
-                                        } else if( $alternatif['kriteria2'] < 0.050 ) {
+                                        } else if( $join['aum'] < 0.050 ) {
                                             $x2 = 1;
                                         }
                 
                                         // kriteria3 = CAGR 1 tahun = x3
-                                        if( $alternatif['kriteria3'] > 8 ) {
+                                        if( $join['cagr'] > 8 ) {
                                             $x3 = 5;
-                                        } else if( $alternatif['kriteria3'] >= 6.01 && $alternatif['kriteria3'] <= 8 ) {
+                                        } else if( $join['cagr'] >= 6.01 && $join['cagr'] <= 8 ) {
                                             $x3 = 4;
-                                        } else if( $alternatif['kriteria3'] >= 4.01 && $alternatif['kriteria3'] <= 6 ) {
+                                        } else if( $join['cagr'] >= 4.01 && $join['cagr'] <= 6 ) {
                                             $x3 = 3;
-                                        } else if( $alternatif['kriteria3'] >= 2 && $alternatif['kriteria3'] <= 4 ) {
+                                        } else if( $join['cagr'] >= 2 && $join['cagr'] <= 4 ) {
                                             $x3 = 2;
-                                        } else if( $alternatif['kriteria3'] < 2 ) {
+                                        } else if( $join['cagr'] < 2 ) {
                                             $x3 = 1;
                                         }
                 
                                         // kriteria4 = dropdown 1 tahun = x4
-                                        if( $alternatif['kriteria4'] > 5 ) {
+                                        if( $join['drawdown'] > 5 ) {
                                             $x4 = 1;
-                                        } else if( $alternatif['kriteria4'] >= 3.01 && $alternatif['kriteria4'] <= 5 ) {
+                                        } else if( $join['drawdown'] >= 3.01 && $join['drawdown'] <= 5 ) {
                                             $x4 = 2;
-                                        } else if( $alternatif['kriteria4'] >= 2.01 && $alternatif['kriteria4'] <= 3 ) {
+                                        } else if( $join['drawdown'] >= 2.01 && $join['drawdown'] <= 3 ) {
                                             $x4 = 3;
-                                        } else if( $alternatif['kriteria4'] >= 1 && $alternatif['kriteria4'] <= 2 ) {
+                                        } else if( $join['drawdown'] >= 1 && $join['drawdown'] <= 2 ) {
                                             $x4 = 4;
-                                        } else if( $alternatif['kriteria4'] < 1 ) {
+                                        } else if( $join['drawdown'] < 1 ) {
                                             $x4 = 5;
                                         }
                 
                                         // kriteria5 = expense ratio = x5
-                                        if( $alternatif['kriteria5'] > 2 ) {
+                                        if( $join['expense'] > 2 ) {
                                             $x5 = 1;
-                                        } else if( $alternatif['kriteria5'] >= 1.51 && $alternatif['kriteria5'] <= 2 ) {
+                                        } else if( $join['expense'] >= 1.51 && $join['expense'] <= 2 ) {
                                             $x5 = 2;
-                                        } else if( $alternatif['kriteria5'] >= 1.01 && $alternatif['kriteria5'] <= 1.5 ) {
+                                        } else if( $join['expense'] >= 1.01 && $join['expense'] <= 1.5 ) {
                                             $x5 = 3;
-                                        } else if( $alternatif['kriteria5'] >= 0.5 && $alternatif['kriteria5'] <= 1 ) {
+                                        } else if( $join['expense'] >= 0.5 && $join['expense'] <= 1 ) {
                                             $x5 = 4;
-                                        } else if( $alternatif['kriteria5'] < 0.5 ) {
+                                        } else if( $join['expense'] < 0.5 ) {
                                             $x5 = 5;
                                         }
                 
                                         // kriteria6 = minimal pembelian = x6
-                                        if( $alternatif['kriteria6'] > 5000000 ) {
+                                        if( $join['minbuy'] > 5000000 ) {
                                             $x6 = 2;
-                                        } else if( $alternatif['kriteria6'] >= 901000 && $alternatif['kriteria6'] <= 5000000 ) {
+                                        } else if( $join['minbuy'] >= 901000 && $join['minbuy'] <= 5000000 ) {
                                             $x6 = 3;
-                                        } else if( $alternatif['kriteria6'] >= 100000 && $alternatif['kriteria6'] <= 900000 ) {
+                                        } else if( $join['minbuy'] >= 100000 && $join['minbuy'] <= 900000 ) {
                                             $x6 = 4;
-                                        } else if( $alternatif['kriteria6'] < 100000 ) {
+                                        } else if( $join['minbuy'] < 100000 ) {
                                             $x6 = 5;
                                         }
                 
                                         // kriteria7 = lama peluncuran = x7
-                                        if( $alternatif['kriteria7'] > 120 ) {
+                                        if( $join['lama_peluncuran'] > 120 ) {
                                             $x7 = 5;
-                                        } else if( $alternatif['kriteria7'] >= 91 && $alternatif['kriteria7'] <= 120 ) {
+                                        } else if( $join['lama_peluncuran'] >= 91 && $join['lama_peluncuran'] <= 120 ) {
                                             $x7 = 4;
-                                        } else if( $alternatif['kriteria7'] >= 61 && $alternatif['kriteria7'] <= 96 ) {
+                                        } else if( $join['lama_peluncuran'] >= 61 && $join['lama_peluncuran'] <= 96 ) {
                                             $x7 = 3;
-                                        } else if( $alternatif['kriteria7'] >= 24 && $alternatif['kriteria7'] <= 60 ) {
+                                        } else if( $join['lama_peluncuran'] >= 24 && $join['lama_peluncuran'] <= 60 ) {
                                             $x7 = 2;
-                                        } else if( $alternatif['kriteria7'] < 24 ) {
+                                        } else if( $join['lama_peluncuran'] < 24 ) {
                                             $x7 = 1;
                                         }
                 
                 
                                         echo "
                                             <tr>
-                                                <td><b>". $alternatif['no_alternatif'] ."</b></td>
-                                                <td>". $alternatif['kriteria1'] ."</td>
+                                                <td><b>". $join['id_api'] ."</b></td>
+                                                <td>". $join['namaProduk'] ."</td>
                                                 <td>". $x1 ."</td>
                                                 <td>". $x2 ."</td>
                                                 <td>". $x3 ."</td>
@@ -298,28 +312,23 @@
                                             </tr>
                                         ";
 
-                                        $iii = $alternatif['no_alternatif']; //id alternatif tabel alternatif
+                                        $totalId = 2;
+                                        $iii = $join['id_api']; //id alternatif tabel alternatif
                                         // global $iii;
                                         // while($d = mysqli_fetch_array($conver)) { // id alternatif tabel convert alternatif
                                         //     // echo $d['idd'];
                                         // };
-                                        if($w == $ww) {
+                                        if($totalId == $ww) {
                                             // echo '1';
-                                            $updateTabelConvert = mysqli_query($koneksi, "UPDATE convert_alternatif SET kriteria1 = '$x1', kriteria2 = '$x2', kriteria3 = '$x3', kriteria4 = '$x4', kriteria5 = '$x5', kriteria6 = '$x6', kriteria7 = '$x7' WHERE no_alternatif = '$iii';");
+                                            $updateTabelConvert = mysqli_query($koneksi, "UPDATE convert_alternatif SET kriteria1 = '$x1', kriteria2 = '$x2', kriteria3 = '$x3', kriteria4 = '$x4', kriteria5 = '$x5', kriteria6 = '$x6', kriteria7 = '$x7' WHERE id_api = '$iii';");
                                         } 
-                                        // else if($w > $ww) {
-                                        //     $tambahDataTabelConvert = mysqli_query($koneksi, "INSERT INTO `convert_alternatif`(`id_matrik_x`, `no_alternatif`, `kriteria1`, `kriteria2`, `kriteria3`, `kriteria4`, `kriteria5`, `kriteria6`, `kriteria7`) VALUES('', '$iii', '$x1', '$x2', '$x3', '$x4', '$x5', '$x6', '$x7') WHERE no_alternatif = '$iii';");
-                                        // }
-                                        // else if($w < $ww) {
-                                        //     $hapusDataTabelConvert = mysqli_query($koneksi, "DELETE FROM convert_alternatif WHERE no_alternatif = '$iii'");
-                                        // }
                                     }
-                                    if($w > $ww) {
-                                        $tambahDataTabelConvert = mysqli_query($koneksi, "INSERT INTO `convert_alternatif`(`id_matrik_x`, `no_alternatif`, `kriteria1`, `kriteria2`, `kriteria3`, `kriteria4`, `kriteria5`, `kriteria6`, `kriteria7`) VALUES('', '$iii', '$x1', '$x2', '$x3', '$x4', '$x5', '$x6', '$x7');");
-                                        //  WHERE no_alternatif = '$iii'
-                                    } else if($w < $ww) {
-                                        $hapusDataTabelConvert = mysqli_query($koneksi, "DELETE FROM convert_alternatif WHERE no_alternatif = '$iii'");
-                                    }
+                                    // if($w > $ww) {
+                                    //     $tambahDataTabelConvert = mysqli_query($koneksi, "INSERT INTO `convert_alternatif`(`id_matrik_x`, `no_alternatif`, `kriteria1`, `kriteria2`, `kriteria3`, `kriteria4`, `kriteria5`, `kriteria6`, `kriteria7`) VALUES('', '$iii', '$x1', '$x2', '$x3', '$x4', '$x5', '$x6', '$x7');");
+                                    //     //  WHERE no_alternatif = '$iii'
+                                    // } else if($w < $ww) {
+                                    //     $hapusDataTabelConvert = mysqli_query($koneksi, "DELETE FROM convert_alternatif WHERE no_alternatif = '$iii'");
+                                    // }
                             ?>
                             </tbody>
                         </table>
@@ -355,94 +364,95 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    foreach($alternatifs as $alternatif) {
+                                    foreach($joinss as $join) {
                                         // kriteria1 = manajer investasi = x1
-                                        if( $alternatif['kriteria1'] == "Sucor Asset Management" || $alternatif['kriteria1'] == "Trimegah Asset Management" ) {
+                                        if( $join['mi'] == "Sucor Asset Management" || $join['mi'] == "Trimegah Asset Management" ) {
                                             $x1 = 5;
-                                        } else if( $alternatif['kriteria1'] == "Asset Management Sinarmas" || $alternatif['kriteria1'] == "Eastpring Investments" ) {
+                                        } else if( $join['mi'] == "Asset Management Sinarmas" || $join['mi'] == "Eastpring Investments" ) {
                                             $x1 = 4;
                                         } else {
                                             $x1 = 3;
                                         }
                 
                                         // kriteria2 = total AUM = x2
-                                        if( $alternatif['kriteria2'] > 1 ) {
+                                        if( $join['aum'] > 1 ) {
                                             $x2 = 5;
-                                        } else if( $alternatif['kriteria2'] >= 0.50001 && $alternatif['kriteria2'] <= 1 ) {
+                                        } else if( $join['aum'] >= 0.50001 && $join['aum'] <= 1 ) {
                                             $x2 = 4;
-                                        } else if( $alternatif['kriteria2'] >= 0.20001 && $alternatif['kriteria2'] <= 0.500 ) {
+                                        } else if( $join['aum'] >= 0.20001 && $join['aum'] <= 0.500 ) {
                                             $x2 = 3;
-                                        } else if( $alternatif['kriteria2'] >= 0.050 && $alternatif['kriteria2'] <= 0.200 ) {
+                                        } else if( $join['aum'] >= 0.050 && $join['aum'] <= 0.200 ) {
                                             $x2 = 2;
-                                        } else if( $alternatif['kriteria2'] < 0.050 ) {
+                                        } else if( $join['aum'] < 0.050 ) {
                                             $x2 = 1;
                                         }
                 
                                         // kriteria3 = CAGR 1 tahun = x3
-                                        if( $alternatif['kriteria3'] > 8 ) {
+                                        if( $join['cagr'] > 8 ) {
                                             $x3 = 5;
-                                        } else if( $alternatif['kriteria3'] >= 6.01 && $alternatif['kriteria3'] <= 8 ) {
+                                        } else if( $join['cagr'] >= 6.01 && $join['cagr'] <= 8 ) {
                                             $x3 = 4;
-                                        } else if( $alternatif['kriteria3'] >= 4.01 && $alternatif['kriteria3'] <= 6 ) {
+                                        } else if( $join['cagr'] >= 4.01 && $join['cagr'] <= 6 ) {
                                             $x3 = 3;
-                                        } else if( $alternatif['kriteria3'] >= 2 && $alternatif['kriteria3'] <= 4 ) {
+                                        } else if( $join['cagr'] >= 2 && $join['cagr'] <= 4 ) {
                                             $x3 = 2;
-                                        } else if( $alternatif['kriteria3'] < 2 ) {
+                                        } else if( $join['cagr'] < 2 ) {
                                             $x3 = 1;
                                         }
                 
                                         // kriteria4 = dropdown 1 tahun = x4
-                                        if( $alternatif['kriteria4'] > 5 ) {
+                                        if( $join['drawdown'] > 5 ) {
                                             $x4 = 1;
-                                        } else if( $alternatif['kriteria4'] >= 3.01 && $alternatif['kriteria4'] <= 5 ) {
+                                        } else if( $join['drawdown'] >= 3.01 && $join['drawdown'] <= 5 ) {
                                             $x4 = 2;
-                                        } else if( $alternatif['kriteria4'] >= 2.01 && $alternatif['kriteria4'] <= 3 ) {
+                                        } else if( $join['drawdown'] >= 2.01 && $join['drawdown'] <= 3 ) {
                                             $x4 = 3;
-                                        } else if( $alternatif['kriteria4'] >= 1 && $alternatif['kriteria4'] <= 2 ) {
+                                        } else if( $join['drawdown'] >= 1 && $join['drawdown'] <= 2 ) {
                                             $x4 = 4;
-                                        } else if( $alternatif['kriteria4'] < 1 ) {
+                                        } else if( $join['drawdown'] < 1 ) {
                                             $x4 = 5;
                                         }
                 
                                         // kriteria5 = expense ratio = x5
-                                        if( $alternatif['kriteria5'] > 2 ) {
+                                        if( $join['expense'] > 2 ) {
                                             $x5 = 1;
-                                        } else if( $alternatif['kriteria5'] >= 1.51 && $alternatif['kriteria5'] <= 2 ) {
+                                        } else if( $join['expense'] >= 1.51 && $join['expense'] <= 2 ) {
                                             $x5 = 2;
-                                        } else if( $alternatif['kriteria5'] >= 1.01 && $alternatif['kriteria5'] <= 1.5 ) {
+                                        } else if( $join['expense'] >= 1.01 && $join['expense'] <= 1.5 ) {
                                             $x5 = 3;
-                                        } else if( $alternatif['kriteria5'] >= 0.5 && $alternatif['kriteria5'] <= 1 ) {
+                                        } else if( $join['expense'] >= 0.5 && $join['expense'] <= 1 ) {
                                             $x5 = 4;
-                                        } else if( $alternatif['kriteria5'] < 0.5 ) {
+                                        } else if( $join['expense'] < 0.5 ) {
                                             $x5 = 5;
                                         }
                 
                                         // kriteria6 = minimal pembelian = x6
-                                        if( $alternatif['kriteria6'] > 5000000 ) {
+                                        if( $join['minbuy'] > 5000000 ) {
                                             $x6 = 2;
-                                        } else if( $alternatif['kriteria6'] >= 901000 && $alternatif['kriteria6'] <= 5000000 ) {
+                                        } else if( $join['minbuy'] >= 901000 && $join['minbuy'] <= 5000000 ) {
                                             $x6 = 3;
-                                        } else if( $alternatif['kriteria6'] >= 100000 && $alternatif['kriteria6'] <= 900000 ) {
+                                        } else if( $join['minbuy'] >= 100000 && $join['minbuy'] <= 900000 ) {
                                             $x6 = 4;
-                                        } else if( $alternatif['kriteria6'] < 100000 ) {
+                                        } else if( $join['minbuy'] < 100000 ) {
                                             $x6 = 5;
                                         }
                 
                                         // kriteria7 = lama peluncuran = x7
-                                        if( $alternatif['kriteria7'] > 120 ) {
+                                        if( $join['lama_peluncuran'] > 120 ) {
                                             $x7 = 5;
-                                        } else if( $alternatif['kriteria7'] >= 91 && $alternatif['kriteria7'] <= 120 ) {
+                                        } else if( $join['lama_peluncuran'] >= 91 && $join['lama_peluncuran'] <= 120 ) {
                                             $x7 = 4;
-                                        } else if( $alternatif['kriteria7'] >= 61 && $alternatif['kriteria7'] <= 96 ) {
+                                        } else if( $join['lama_peluncuran'] >= 61 && $join['lama_peluncuran'] <= 96 ) {
                                             $x7 = 3;
-                                        } else if( $alternatif['kriteria7'] >= 24 && $alternatif['kriteria7'] <= 60 ) {
+                                        } else if( $join['lama_peluncuran'] >= 24 && $join['lama_peluncuran'] <= 60 ) {
                                             $x7 = 2;
-                                        } else if( $alternatif['kriteria7'] < 24 ) {
+                                        } else if( $join['lama_peluncuran'] < 24 ) {
                                             $x7 = 1;
                                         }
+
                                         echo "
                                             <tr>
-                                                <td><b>". $alternatif['no_alternatif'] ."</b></td>
+                                                <td><b>". $join['id_api'] ."</b></td>
                                                 <td>". round($x1 / $max['maxK1'],2)  ."</td>
                                                 <td>". round($x2 / $max['maxK2'],2)  ."</td>
                                                 <td>". round($x3 / $max['maxK3'],2)  ."</td>
@@ -452,6 +462,7 @@
                                                 <td>". round($x7 / $max['maxK7'],2)  ."</td>
                                             </tr>
                                         ";
+                                        
                                     }
                                 ?>
                             </tbody>
@@ -483,89 +494,89 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    foreach($alternatifs as $alternatif) {
+                                    foreach($joinsss as $join) {
                                         // kriteria1 = manajer investasi = x1
-                                        if( $alternatif['kriteria1'] == "Sucor Asset Management" || $alternatif['kriteria1'] == "Trimegah Asset Management" ) {
+                                        if( $join['mi'] == "Sucor Asset Management" || $join['mi'] == "Trimegah Asset Management" ) {
                                             $x1 = 5;
-                                        } else if( $alternatif['kriteria1'] == "Asset Management Sinarmas" || $alternatif['kriteria1'] == "Eastpring Investments" ) {
+                                        } else if( $join['mi'] == "Asset Management Sinarmas" || $join['mi'] == "Eastpring Investments" ) {
                                             $x1 = 4;
                                         } else {
                                             $x1 = 3;
                                         }
                 
                                         // kriteria2 = total AUM = x2
-                                        if( $alternatif['kriteria2'] > 1 ) {
+                                        if( $join['aum'] > 1 ) {
                                             $x2 = 5;
-                                        } else if( $alternatif['kriteria2'] >= 0.50001 && $alternatif['kriteria2'] <= 1 ) {
+                                        } else if( $join['aum'] >= 0.50001 && $join['aum'] <= 1 ) {
                                             $x2 = 4;
-                                        } else if( $alternatif['kriteria2'] >= 0.20001 && $alternatif['kriteria2'] <= 0.500 ) {
+                                        } else if( $join['aum'] >= 0.20001 && $join['aum'] <= 0.500 ) {
                                             $x2 = 3;
-                                        } else if( $alternatif['kriteria2'] >= 0.050 && $alternatif['kriteria2'] <= 0.200 ) {
+                                        } else if( $join['aum'] >= 0.050 && $join['aum'] <= 0.200 ) {
                                             $x2 = 2;
-                                        } else if( $alternatif['kriteria2'] < 0.050 ) {
+                                        } else if( $join['aum'] < 0.050 ) {
                                             $x2 = 1;
                                         }
                 
                                         // kriteria3 = CAGR 1 tahun = x3
-                                        if( $alternatif['kriteria3'] > 8 ) {
+                                        if( $join['cagr'] > 8 ) {
                                             $x3 = 5;
-                                        } else if( $alternatif['kriteria3'] >= 6.01 && $alternatif['kriteria3'] <= 8 ) {
+                                        } else if( $join['cagr'] >= 6.01 && $join['cagr'] <= 8 ) {
                                             $x3 = 4;
-                                        } else if( $alternatif['kriteria3'] >= 4.01 && $alternatif['kriteria3'] <= 6 ) {
+                                        } else if( $join['cagr'] >= 4.01 && $join['cagr'] <= 6 ) {
                                             $x3 = 3;
-                                        } else if( $alternatif['kriteria3'] >= 2 && $alternatif['kriteria3'] <= 4 ) {
+                                        } else if( $join['cagr'] >= 2 && $join['cagr'] <= 4 ) {
                                             $x3 = 2;
-                                        } else if( $alternatif['kriteria3'] < 2 ) {
+                                        } else if( $join['cagr'] < 2 ) {
                                             $x3 = 1;
                                         }
                 
                                         // kriteria4 = dropdown 1 tahun = x4
-                                        if( $alternatif['kriteria4'] > 5 ) {
+                                        if( $join['drawdown'] > 5 ) {
                                             $x4 = 1;
-                                        } else if( $alternatif['kriteria4'] >= 3.01 && $alternatif['kriteria4'] <= 5 ) {
+                                        } else if( $join['drawdown'] >= 3.01 && $join['drawdown'] <= 5 ) {
                                             $x4 = 2;
-                                        } else if( $alternatif['kriteria4'] >= 2.01 && $alternatif['kriteria4'] <= 3 ) {
+                                        } else if( $join['drawdown'] >= 2.01 && $join['drawdown'] <= 3 ) {
                                             $x4 = 3;
-                                        } else if( $alternatif['kriteria4'] >= 1 && $alternatif['kriteria4'] <= 2 ) {
+                                        } else if( $join['drawdown'] >= 1 && $join['drawdown'] <= 2 ) {
                                             $x4 = 4;
-                                        } else if( $alternatif['kriteria4'] < 1 ) {
+                                        } else if( $join['drawdown'] < 1 ) {
                                             $x4 = 5;
                                         }
                 
                                         // kriteria5 = expense ratio = x5
-                                        if( $alternatif['kriteria5'] > 2 ) {
+                                        if( $join['expense'] > 2 ) {
                                             $x5 = 1;
-                                        } else if( $alternatif['kriteria5'] >= 1.51 && $alternatif['kriteria5'] <= 2 ) {
+                                        } else if( $join['expense'] >= 1.51 && $join['expense'] <= 2 ) {
                                             $x5 = 2;
-                                        } else if( $alternatif['kriteria5'] >= 1.01 && $alternatif['kriteria5'] <= 1.5 ) {
+                                        } else if( $join['expense'] >= 1.01 && $join['expense'] <= 1.5 ) {
                                             $x5 = 3;
-                                        } else if( $alternatif['kriteria5'] >= 0.5 && $alternatif['kriteria5'] <= 1 ) {
+                                        } else if( $join['expense'] >= 0.5 && $join['expense'] <= 1 ) {
                                             $x5 = 4;
-                                        } else if( $alternatif['kriteria5'] < 0.5 ) {
+                                        } else if( $join['expense'] < 0.5 ) {
                                             $x5 = 5;
                                         }
                 
                                         // kriteria6 = minimal pembelian = x6
-                                        if( $alternatif['kriteria6'] > 5000000 ) {
+                                        if( $join['minbuy'] > 5000000 ) {
                                             $x6 = 2;
-                                        } else if( $alternatif['kriteria6'] >= 901000 && $alternatif['kriteria6'] <= 5000000 ) {
+                                        } else if( $join['minbuy'] >= 901000 && $join['minbuy'] <= 5000000 ) {
                                             $x6 = 3;
-                                        } else if( $alternatif['kriteria6'] >= 100000 && $alternatif['kriteria6'] <= 900000 ) {
+                                        } else if( $join['minbuy'] >= 100000 && $join['minbuy'] <= 900000 ) {
                                             $x6 = 4;
-                                        } else if( $alternatif['kriteria6'] < 100000 ) {
+                                        } else if( $join['minbuy'] < 100000 ) {
                                             $x6 = 5;
                                         }
                 
                                         // kriteria7 = lama peluncuran = x7
-                                        if( $alternatif['kriteria7'] > 120 ) {
+                                        if( $join['lama_peluncuran'] > 120 ) {
                                             $x7 = 5;
-                                        } else if( $alternatif['kriteria7'] >= 91 && $alternatif['kriteria7'] <= 120 ) {
+                                        } else if( $join['lama_peluncuran'] >= 91 && $join['lama_peluncuran'] <= 120 ) {
                                             $x7 = 4;
-                                        } else if( $alternatif['kriteria7'] >= 61 && $alternatif['kriteria7'] <= 96 ) {
+                                        } else if( $join['lama_peluncuran'] >= 61 && $join['lama_peluncuran'] <= 96 ) {
                                             $x7 = 3;
-                                        } else if( $alternatif['kriteria7'] >= 24 && $alternatif['kriteria7'] <= 60 ) {
+                                        } else if( $join['lama_peluncuran'] >= 24 && $join['lama_peluncuran'] <= 60 ) {
                                             $x7 = 2;
-                                        } else if( $alternatif['kriteria7'] < 24 ) {
+                                        } else if( $join['lama_peluncuran'] < 24 ) {
                                             $x7 = 1;
                                         }
 
@@ -580,9 +591,10 @@
                                         );
 
                                         
-                                        $no_al = $alternatif['no_alternatif'];
-                                        $namaProduk = $alternatif['nama_produk'];
-                                        $kriteria1 = $alternatif['kriteria1'];
+                                        $iiii = $join['id_api'];
+                                        // $namaProduk = $alternatif['nama_produk'];
+                                        // $kriteria1 = $alternatif['kriteria1'];
+                                        $totalId = 2;
                                         
                                         // $updateNilaiPreferensi = mysqli_query($koneksi, "UPDATE rangking SET nilai_preferensi = '$nilaiPreferensi' WHERE no_alternatif = '$no_al';");
                                         // $w = mysqli_num_rows($alternatifs);
@@ -600,16 +612,16 @@
 
                                         echo "
                                             <tr>
-                                                <td><b>". $alternatif['no_alternatif'] ."</b></td>
-                                                <td>". $alternatif['kriteria1'] ."</td>
+                                                <td><b>". $join['id_api'] ."</b></td>
+                                                <td>". $join['mi'] ."</td>
                                                 <td>". $nilaiPreferensi ."</td>
                                             </tr>
                                         ";
                                         // echo $nilaiPreferensi;
                                         // echo '<br>';
-                                        if($w == $www) {
+                                        if($totalId == $www) {
                                             // echo '1';
-                                            $updateNilaiPreferensi = mysqli_query($koneksi, "UPDATE rangking SET nilai_preferensi = '$nilaiPreferensi' WHERE no_alternatif = '$no_al';");
+                                            $updateNilaiPreferensi = mysqli_query($koneksi, "UPDATE rangking SET nilai_preferensi = '$nilaiPreferensi' WHERE id_api = '$iiii';");
                                         } 
                                         // else if($w < $www) {
                                         //     $hapusDataNilaiPreferensi = mysqli_query($koneksi, "DELETE FROM rangking WHERE no_alternatif = '$no_al'");
@@ -620,17 +632,17 @@
                                         //     echo $no_al;
                                         // }
                                     }
-                                    if($w > $www) {
-                                        $tambahDataNilaiPreferensi = mysqli_query($koneksi, "INSERT INTO `rangking`(`id_rank`, `no_alternatif`, `nama_produk`, `kriteria1`, `nilai_preferensi`) VALUES('', '$no_al', '$namaProduk', '$kriteria1', '$nilaiPreferensi');");
-                                        //  WHERE no_alternatif = '$no_al'
-                                    } else if($w < $www) {
-                                        $hapusDataNilaiPreferensi = mysqli_query($koneksi, "DELETE FROM rangking WHERE no_alternatif = '$no_al'");
-                                        // echo $w;
-                                        // echo '==';
-                                        // echo $www;
-                                        // echo '===';
-                                        // echo $no_al;
-                                    }
+                                    // if($w > $www) {
+                                    //     $tambahDataNilaiPreferensi = mysqli_query($koneksi, "INSERT INTO `rangking`(`id_rank`, `no_alternatif`, `nama_produk`, `kriteria1`, `nilai_preferensi`) VALUES('', '$no_al', '$namaProduk', '$kriteria1', '$nilaiPreferensi');");
+                                    //     //  WHERE no_alternatif = '$no_al'
+                                    // } else if($w < $www) {
+                                    //     $hapusDataNilaiPreferensi = mysqli_query($koneksi, "DELETE FROM rangking WHERE no_alternatif = '$no_al'");
+                                    //     // echo $w;
+                                    //     // echo '==';
+                                    //     // echo $www;
+                                    //     // echo '===';
+                                    //     // echo $no_al;
+                                    // }
                                 ?>
                             </tbody>
                         </table>
@@ -690,7 +702,7 @@
 
                                     echo "
                                         <tr>
-                                            <td><b>". $rank['no_alternatif'] ."</b></td>
+                                            <td><b>". $rank['id_api'] ."</b></td>
                                             <td>". $rank['nama_produk'] ."</td>
                                             <td>". $rank['kriteria1'] ."</td>
                                             <td>". $rank['nilai_preferensi'] ."</td>
@@ -707,7 +719,7 @@
                     </table>
                 </div>
             </div>
-            <span class="pesan-update">*Data diperbaharui terakhir tanggal 20 Mei 2022</span>
+            <span class="pesan-update">*Data up to date karena menggunakan Public API dari Bibit.</span>
         </div>
     </div>
     <!-- rangking -->
