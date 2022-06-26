@@ -25,12 +25,12 @@
     $pdf->SetFont('Arial','B',9);
     $pdf->Cell(17,10,'Alternatif',1,0,'C');
     $pdf->Cell(73,10,'Nama Produk',1,0,'C');
-    $pdf->Cell(57,10,'Manajer Investasi',1,0,'C');
+    $pdf->Cell(65,10,'Manajer Investasi',1,0,'C');
     $pdf->Cell(20,10,'Total AUM',1,0,'C');
     $pdf->Cell(15,10,'CAGR',1,0,'C');
-    $pdf->Cell(20,10,'Drawdown',1,0,'C');
+    $pdf->Cell(17,10,'Drawdown',1,0,'C');
     $pdf->Cell(25,10,'Expense Ratio',1,0,'C');
-    $pdf->Cell(30,10,'Minimal Pembelian',1,0,'C');
+    $pdf->Cell(25,10,'Min. Pembelian',1,0,'C');
     $pdf->Cell(30,10,'Lama Peluncuran',1,1,'C');
 
 
@@ -41,12 +41,12 @@
         
         $pdf->Cell(17,9,'A'.$data['id_api'],1,0,'C');
         $pdf->Cell(73,9,$data['namaProduk'],1,0);
-        $pdf->Cell(57,9,$data['mi'],1,0);
+        $pdf->Cell(65,9,$data['mi'],1,0);
         $pdf->Cell(20,9,$data['aum']." T",1,0,'C');
         $pdf->Cell(15,9,$data['cagr']."%",1,0,'C');
-        $pdf->Cell(20,9,"-".$data['drawdown']."%",1,0,'C');
+        $pdf->Cell(17,9,$data['drawdown']."%",1,0,'C');
         $pdf->Cell(25,9,$data['expense']."%",1,0,'C');
-        $pdf->Cell(30,9,"Rp ".$data['minbuy'],1,0,'R');
+        $pdf->Cell(25,9,"Rp ".$data['minbuy'],1,0,'R');
         $pdf->Cell(30,9,round($data['lama_peluncuran']/12,0)." Tahun, ". $data['lama_peluncuran'] % 12 ." Bulan",1,1,'C');
     }
 

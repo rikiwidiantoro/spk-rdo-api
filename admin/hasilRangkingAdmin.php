@@ -252,9 +252,9 @@
                                         }
                 
                                         // kriteria6 = minimal pembelian = x6
-                                        if( $join['minbuy'] > 5000000 ) {
+                                        if( $join['minbuy'] > 5000000 || $join['minbuy'] == 5000 ) {
                                             $x6 = 2;
-                                        } else if( $join['minbuy'] >= 901000 && $join['minbuy'] <= 5000000 ) {
+                                        } else if( $join['minbuy'] >= 901000 && $join['minbuy'] <= 5000000 || $join['minbuy'] == 100 ) {
                                             $x6 = 3;
                                         } else if( $join['minbuy'] >= 100000 && $join['minbuy'] <= 900000 ) {
                                             $x6 = 4;
@@ -405,9 +405,9 @@
                                         }
                 
                                         // kriteria6 = minimal pembelian = x6
-                                        if( $join['minbuy'] > 5000000 ) {
+                                        if( $join['minbuy'] > 5000000 || $join['minbuy'] == 5000 ) {
                                             $x6 = 2;
-                                        } else if( $join['minbuy'] >= 901000 && $join['minbuy'] <= 5000000 ) {
+                                        } else if( $join['minbuy'] >= 901000 && $join['minbuy'] <= 5000000 || $join['minbuy'] == 100 ) {
                                             $x6 = 3;
                                         } else if( $join['minbuy'] >= 100000 && $join['minbuy'] <= 900000 ) {
                                             $x6 = 4;
@@ -546,9 +546,9 @@
                                         }
                 
                                         // kriteria6 = minimal pembelian = x6
-                                        if( $join['minbuy'] > 5000000 ) {
+                                        if( $join['minbuy'] > 5000000 || $join['minbuy'] == 5000 ) {
                                             $x6 = 2;
-                                        } else if( $join['minbuy'] >= 901000 && $join['minbuy'] <= 5000000 ) {
+                                        } else if( $join['minbuy'] >= 901000 && $join['minbuy'] <= 5000000 || $join['minbuy'] == 100 ) {
                                             $x6 = 3;
                                         } else if( $join['minbuy'] >= 100000 && $join['minbuy'] <= 900000 ) {
                                             $x6 = 4;

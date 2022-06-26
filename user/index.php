@@ -260,10 +260,14 @@
                         <tbody>
                             <?php
                                 foreach($join as $fetch) {
-                                    // $lama = $fetch['lama_peluncuran'];
-                                    // $jmlhBln = 12;
-                                    // $tahun = $lama / $jmlhBln;
-                                    // $bulan = $lama % $jmlhBln;
+
+                                    // membedakan mata uang usd dan rupiah
+                                    if($fetch['namaProduk'] === 'BNP Paribas Prima USD Kelas RK1' || $fetch['namaProduk'] === 'Manulife USD Fixed Income Kelas A') {
+                                        $mataUang = 'USD';
+                                    } else {
+                                        $mataUang = 'Rp';
+                                    }
+
                                     echo "
                                     <tr>
                                         <td class='center'>A". $fetch['id_api'] ."</td>
@@ -273,7 +277,7 @@
                                         <td class='center'>". $fetch['cagr'] ."%</td>
                                         <td class='center'>". $fetch['drawdown'] ."%</td>
                                         <td class='center'>". $fetch['expense'] ."%</td>
-                                        <td>Rp ". $fetch['minbuy'] ."</td>
+                                        <td>". $mataUang ." ". $fetch['minbuy'] ."</td>
                                         <td style='width:150px;'>".  round((int) $fetch['lama_peluncuran'] / 12)." Tahun, ". (int) $fetch['lama_peluncuran'] % 12 ." Bulan</td>
                                     </tr>
                                     

@@ -235,6 +235,13 @@ error_reporting(0);
                         <tbody>
                             <?php
                                 foreach($join as $fetch) {
+
+                                    // membedakan mata uang usd dan rupiah
+                                    if($fetch['namaProduk'] === 'BNP Paribas Prima USD Kelas RK1' || $fetch['namaProduk'] === 'Manulife USD Fixed Income Kelas A') {
+                                        $mataUang = 'USD';
+                                    } else {
+                                        $mataUang = 'Rp';
+                                    }
                                     
                                     echo "
                                     <tr>
@@ -245,7 +252,7 @@ error_reporting(0);
                                         <td class='center'>". $fetch['cagr'] ."%</td>
                                         <td class='center'>". $fetch['drawdown'] ."%</td>
                                         <td class='center'>". $fetch['expense'] ."%</td>
-                                        <td>Rp ". $fetch['minbuy'] ."</td>
+                                        <td>". $mataUang ." ". $fetch['minbuy'] ."</td>
                                         <td style='width:150px;'>". round((int) $fetch['lama_peluncuran'] / 12, 0)." Tahun, ". (int) $fetch['lama_peluncuran'] % 12 ." Bulan</td>
                                     </tr>
                                     
@@ -305,6 +312,12 @@ error_reporting(0);
                                     $expenseRatio = round($hasil['expenseratio']['percentage'] * 100, 2);
                                     $minBuy = $hasil['minbuy'];
 
+                                    // membedakan mata uang usd dan rupiah
+                                    if($namaProduk === 'BNP Paribas Prima USD Kelas RK1' || $namaProduk === 'Manulife USD Fixed Income Kelas A') {
+                                        $mataUang = 'USD';
+                                    } else {
+                                        $mataUang = 'Rp';
+                                    }
 
                                     echo "
                                     <tr>
@@ -315,7 +328,7 @@ error_reporting(0);
                                         <td class='center'>". $cagr."%</td>
                                         <td class='center'>". $drawdown."%</td>
                                         <td class='center'>". $expenseRatio."%</td>
-                                        <td>Rp ". $minBuy."</td>
+                                        <td>". $mataUang ." ". $minBuy ."</td>
                                     </tr>
                                     
                                     ";

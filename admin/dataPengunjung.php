@@ -5,6 +5,20 @@
     $dataUsers = mysqli_query($koneksi, "SELECT * FROM login");
 
 
+    // $angka = 100;
+
+
+    // if( $angka > 5000000 || $angka == 5000) {
+    //     echo $x6 = 2;
+    // } else if( $angka >= 901000 && $angka <= 5000000 || $angka == 100 ) {
+    //     echo $x6 = 3;
+    // } else if( $angka >= 100000 && $angka <= 900000 ) {
+    //     echo $x6 = 4;
+    // } else if( $angka < 100000 ) {
+    //     echo $x6 = 5;
+    // }
+
+
 ?>
 
 <!DOCTYPE html>
