@@ -53,7 +53,7 @@
     // new
     foreach($results as $hasil) {
         // inisialisasi
-        $totalId = 25;
+        $totalId = 30;
         $id = $hasil['id'];
         $namaProduk = $hasil['name'];
 
@@ -262,7 +262,7 @@
                                 foreach($join as $fetch) {
 
                                     // membedakan mata uang usd dan rupiah
-                                    if($fetch['namaProduk'] === 'BNP Paribas Prima USD Kelas RK1' || $fetch['namaProduk'] === 'Manulife USD Fixed Income Kelas A') {
+                                    if($fetch['namaProduk'] === 'BNP Paribas Prima USD Kelas RK1' || $fetch['namaProduk'] === 'Manulife USD Fixed Income Kelas A' || $fetch['namaProduk'] === 'Schroder USD Bond Fund') {
                                         $mataUang = 'USD';
                                     } else {
                                         $mataUang = 'Rp';

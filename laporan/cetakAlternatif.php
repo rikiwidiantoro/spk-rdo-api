@@ -38,7 +38,14 @@
     $rangking = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
     $pdf->SetFont('Arial','',9);
     while($data = mysqli_fetch_array($rangking)) {
-        
+
+        // membedakan mata uang usd dan rupiah
+        if($data['namaProduk'] === 'BNP Paribas Prima USD Kelas RK1' || $data['namaProduk'] === 'Manulife USD Fixed Income Kelas A' || $data['namaProduk'] === 'Schroder USD Bond Fund') {
+            $mataUang = 'USD';
+        } else {
+            $mataUang = 'Rp';
+        }
+         
         $pdf->Cell(17,9,'A'.$data['id_api'],1,0,'C');
         $pdf->Cell(73,9,$data['namaProduk'],1,0);
         $pdf->Cell(65,9,$data['mi'],1,0);
@@ -46,7 +53,7 @@
         $pdf->Cell(15,9,$data['cagr']."%",1,0,'C');
         $pdf->Cell(17,9,$data['drawdown']."%",1,0,'C');
         $pdf->Cell(25,9,$data['expense']."%",1,0,'C');
-        $pdf->Cell(25,9,"Rp ".$data['minbuy'],1,0,'R');
+        $pdf->Cell(25,9,$mataUang ." ".$data['minbuy'],1,0,'R');
         $pdf->Cell(30,9,round($data['lama_peluncuran']/12,0)." Tahun, ". $data['lama_peluncuran'] % 12 ." Bulan",1,1,'C');
     }
 

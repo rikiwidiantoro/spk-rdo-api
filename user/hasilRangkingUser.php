@@ -39,7 +39,7 @@
 
 
     // new
-    $totalId = 25;
+    $totalId = 30;
     $joins = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
     
     // convert-alternatif
@@ -232,7 +232,7 @@
             (($x1 / $max['maxK1']) * $bobot[0]) +
             (($x2 / $max['maxK2']) * $bobot[1]) +
             (($x3 / $max['maxK3']) * $bobot[2]) +
-            (($min['minK4'] / $x4) * $bobot[3]) +
+            ((int) ($min['minK4'] / $x4) * $bobot[3]) +
             (($min['minK5'] / $x5) * $bobot[4]) +
             (($min['minK6'] / $x6) * $bobot[5]) +
             (($x7 / $max['maxK7']) * $bobot[6]),2

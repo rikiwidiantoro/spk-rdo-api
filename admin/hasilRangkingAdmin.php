@@ -28,7 +28,7 @@
 
 
     // untuk pengkondisian tambah, update t.convert & t.rangking
-    $totalId = 25;
+    $totalId = 30;
     $r = mysqli_query($koneksi, "SELECT * FROM rangking");
     $ww = mysqli_num_rows($converts);
     $www = mysqli_num_rows($r);

@@ -32,7 +32,7 @@ error_reporting(0);
 
     // api
     // $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=35');
-    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=25');
+    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=30');
     $contents = utf8_encode($contents);
     $result = json_decode($contents, 1);
 
@@ -237,7 +237,7 @@ error_reporting(0);
                                 foreach($join as $fetch) {
 
                                     // membedakan mata uang usd dan rupiah
-                                    if($fetch['namaProduk'] === 'BNP Paribas Prima USD Kelas RK1' || $fetch['namaProduk'] === 'Manulife USD Fixed Income Kelas A') {
+                                    if($fetch['namaProduk'] === 'BNP Paribas Prima USD Kelas RK1' || $fetch['namaProduk'] === 'Manulife USD Fixed Income Kelas A' || $fetch['namaProduk'] === 'Schroder USD Bond Fund') {
                                         $mataUang = 'USD';
                                     } else {
                                         $mataUang = 'Rp';
@@ -300,7 +300,7 @@ error_reporting(0);
                             <?php
                                 foreach($results as $hasil) {
                                     // inisialisasi
-                                    $totalId = 25;
+                                    $totalId = 30;
                                     $id = $hasil['id'];
                                     $namaProduk = $hasil['name'];
 
@@ -313,7 +313,7 @@ error_reporting(0);
                                     $minBuy = $hasil['minbuy'];
 
                                     // membedakan mata uang usd dan rupiah
-                                    if($namaProduk === 'BNP Paribas Prima USD Kelas RK1' || $namaProduk === 'Manulife USD Fixed Income Kelas A') {
+                                    if($namaProduk === 'BNP Paribas Prima USD Kelas RK1' || $namaProduk === 'Manulife USD Fixed Income Kelas A' || $namaProduk === 'Schroder USD Bond Fund') {
                                         $mataUang = 'USD';
                                     } else {
                                         $mataUang = 'Rp';
