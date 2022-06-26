@@ -35,19 +35,19 @@
 
 
 
-    $rangking = mysqli_query($koneksi, "SELECT * FROM alternatif ORDER BY no_alternatif ASC");
+    $rangking = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
     $pdf->SetFont('Arial','',9);
     while($data = mysqli_fetch_array($rangking)) {
         
-        $pdf->Cell(17,9,$data['no_alternatif'],1,0,'C');
-        $pdf->Cell(73,9,$data['nama_produk'],1,0);
-        $pdf->Cell(57,9,$data['kriteria1'],1,0);
-        $pdf->Cell(20,9,$data['kriteria2']." T",1,0,'C');
-        $pdf->Cell(15,9,$data['kriteria3']."%",1,0,'C');
-        $pdf->Cell(20,9,"-".$data['kriteria4']."%",1,0,'C');
-        $pdf->Cell(25,9,$data['kriteria5']."%",1,0,'C');
-        $pdf->Cell(30,9,"Rp ".$data['kriteria6'],1,0,'R');
-        $pdf->Cell(30,9,round($data['kriteria7']/12,0)." Tahun, ". $data['kriteria7'] % 12 ." Bulan",1,1,'C');
+        $pdf->Cell(17,9,'A'.$data['id_api'],1,0,'C');
+        $pdf->Cell(73,9,$data['namaProduk'],1,0);
+        $pdf->Cell(57,9,$data['mi'],1,0);
+        $pdf->Cell(20,9,$data['aum']." T",1,0,'C');
+        $pdf->Cell(15,9,$data['cagr']."%",1,0,'C');
+        $pdf->Cell(20,9,"-".$data['drawdown']."%",1,0,'C');
+        $pdf->Cell(25,9,$data['expense']."%",1,0,'C');
+        $pdf->Cell(30,9,"Rp ".$data['minbuy'],1,0,'R');
+        $pdf->Cell(30,9,round($data['lama_peluncuran']/12,0)." Tahun, ". $data['lama_peluncuran'] % 12 ." Bulan",1,1,'C');
     }
 
     $pdf->SetTitle('Daftar Data Alternatif');
