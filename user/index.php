@@ -268,6 +268,15 @@
                                         $mataUang = 'Rp';
                                     }
 
+                                    // lama peluncuran
+                                    $tanggal = new DateTime($fetch['lama_peluncuran']);
+                                    // tanggal hari ini
+                                    $today = new DateTime('today');
+                                    // tahun
+                                    $y = $today->diff($tanggal)->y;
+                                    // bulan
+                                    $m = $today->diff($tanggal)->m;
+
                                     echo "
                                     <tr>
                                         <td class='center'>A". $fetch['id_api'] ."</td>
@@ -278,7 +287,7 @@
                                         <td class='center'>". $fetch['drawdown'] ."%</td>
                                         <td class='center'>". $fetch['expense'] ."%</td>
                                         <td>". $mataUang ." ". $fetch['minbuy'] ."</td>
-                                        <td style='width:150px;'>".  round((int) $fetch['lama_peluncuran'] / 12)." Tahun, ". (int) $fetch['lama_peluncuran'] % 12 ." Bulan</td>
+                                        <td style='width:150px;'>". $y ." Tahun, ". $m ." Bulan</td>
                                     </tr>
                                     
                                     ";

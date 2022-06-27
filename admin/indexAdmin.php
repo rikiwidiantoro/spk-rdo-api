@@ -205,14 +205,11 @@ error_reporting(0);
     <div id="alternatif" class="alternatif">
         <div class="con">
             <div class="row">
-                <div class="col m8">
+                <div class="col m10">
                     <h5>Tabel Alternatif</h5>
                 </div>
                 <div class="col m2">
                     <a href="../laporan/cetakAlternatif.php" class="waves-effect right waves-light btn-small grey darken-1 tambah-alternatif" target="_blank"><i class="material-icons left">print</i>Cetak Alternatif</a>
-                </div>
-                <div class="col m2">
-                    <a href="../crud/tambahAlternatif.php" class="waves-effect right waves-light btn-small grey darken-1 tambah-alternatif"><i class="material-icons left">add</i>Tambah Alternatif</a>
                 </div>
             </div>
             <div class="row">
@@ -242,6 +239,16 @@ error_reporting(0);
                                     } else {
                                         $mataUang = 'Rp';
                                     }
+
+
+                                    // lama peluncuran
+                                    $tanggal = new DateTime($fetch['lama_peluncuran']);
+                                    // tanggal hari ini
+                                    $today = new DateTime('today');
+                                    // tahun
+                                    $y = $today->diff($tanggal)->y;
+                                    // bulan
+                                    $m = $today->diff($tanggal)->m;
                                     
                                     echo "
                                     <tr>
@@ -253,7 +260,7 @@ error_reporting(0);
                                         <td class='center'>". $fetch['drawdown'] ."%</td>
                                         <td class='center'>". $fetch['expense'] ."%</td>
                                         <td>". $mataUang ." ". $fetch['minbuy'] ."</td>
-                                        <td style='width:150px;'>". round((int) $fetch['lama_peluncuran'] / 12, 0)." Tahun, ". (int) $fetch['lama_peluncuran'] % 12 ." Bulan</td>
+                                        <td style='width:150px;'>". $y ." Tahun, ". $m ." Bulan</td>
                                     </tr>
                                     
                                     ";
@@ -278,7 +285,7 @@ error_reporting(0);
         <div class="con">
             <div class="row">
                 <div class="col m8">
-                    <h5>Tabel Alternatif Hasil Fetch API</h5>
+                    <h5>Tabel Data Hasil Fetch API</h5>
                 </div>
             </div>
             <div class="row">

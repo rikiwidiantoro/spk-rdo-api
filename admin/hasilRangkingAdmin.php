@@ -263,17 +263,39 @@
                                         }
                 
                                         // kriteria7 = lama peluncuran = x7
-                                        if( $join['lama_peluncuran'] > 120 ) {
+                                        // lama peluncuran
+                                        $tanggal = new DateTime($join['lama_peluncuran']);
+                                        // tanggal hari ini
+                                        $today = new DateTime('today');
+                                        // tahun
+                                        $y = $today->diff($tanggal)->y;
+                                        // bulan
+                                        $m = $today->diff($tanggal)->m;
+
+                                        $hasilBulan = ($y*12) + $m;
+
+                                        if( $hasilBulan > 120 ) {
                                             $x7 = 5;
-                                        } else if( $join['lama_peluncuran'] >= 91 && $join['lama_peluncuran'] <= 120 ) {
+                                        } else if( $hasilBulan >= 97 && $hasilBulan <= 120 ) {
                                             $x7 = 4;
-                                        } else if( $join['lama_peluncuran'] >= 61 && $join['lama_peluncuran'] <= 96 ) {
+                                        } else if( $hasilBulan >= 61 && $hasilBulan <= 96 ) {
                                             $x7 = 3;
-                                        } else if( $join['lama_peluncuran'] >= 24 && $join['lama_peluncuran'] <= 60 ) {
+                                        } else if( $hasilBulan >= 24 && $hasilBulan <= 60 ) {
                                             $x7 = 2;
-                                        } else if( $join['lama_peluncuran'] < 24 ) {
+                                        } else if( $hasilBulan < 24 ) {
                                             $x7 = 1;
                                         }
+                                        // if( $join['lama_peluncuran'] > 120 ) {
+                                        //     $x7 = 5;
+                                        // } else if( $join['lama_peluncuran'] >= 91 && $join['lama_peluncuran'] <= 120 ) {
+                                        //     $x7 = 4;
+                                        // } else if( $join['lama_peluncuran'] >= 61 && $join['lama_peluncuran'] <= 96 ) {
+                                        //     $x7 = 3;
+                                        // } else if( $join['lama_peluncuran'] >= 24 && $join['lama_peluncuran'] <= 60 ) {
+                                        //     $x7 = 2;
+                                        // } else if( $join['lama_peluncuran'] < 24 ) {
+                                        //     $x7 = 1;
+                                        // }
                 
                 
                                         echo "
@@ -416,15 +438,26 @@
                                         }
                 
                                         // kriteria7 = lama peluncuran = x7
-                                        if( $join['lama_peluncuran'] > 120 ) {
+                                        // lama peluncuran
+                                        $tanggal = new DateTime($join['lama_peluncuran']);
+                                        // tanggal hari ini
+                                        $today = new DateTime('today');
+                                        // tahun
+                                        $y = $today->diff($tanggal)->y;
+                                        // bulan
+                                        $m = $today->diff($tanggal)->m;
+
+                                        $hasilBulan = ($y*12) + $m;
+
+                                        if( $hasilBulan > 120 ) {
                                             $x7 = 5;
-                                        } else if( $join['lama_peluncuran'] >= 91 && $join['lama_peluncuran'] <= 120 ) {
+                                        } else if( $hasilBulan >= 97 && $hasilBulan <= 120 ) {
                                             $x7 = 4;
-                                        } else if( $join['lama_peluncuran'] >= 61 && $join['lama_peluncuran'] <= 96 ) {
+                                        } else if( $hasilBulan >= 61 && $hasilBulan <= 96 ) {
                                             $x7 = 3;
-                                        } else if( $join['lama_peluncuran'] >= 24 && $join['lama_peluncuran'] <= 60 ) {
+                                        } else if( $hasilBulan >= 24 && $hasilBulan <= 60 ) {
                                             $x7 = 2;
-                                        } else if( $join['lama_peluncuran'] < 24 ) {
+                                        } else if( $hasilBulan < 24 ) {
                                             $x7 = 1;
                                         }
 
@@ -557,15 +590,26 @@
                                         }
                 
                                         // kriteria7 = lama peluncuran = x7
-                                        if( $join['lama_peluncuran'] > 120 ) {
+                                        // lama peluncuran
+                                        $tanggal = new DateTime($join['lama_peluncuran']);
+                                        // tanggal hari ini
+                                        $today = new DateTime('today');
+                                        // tahun
+                                        $y = $today->diff($tanggal)->y;
+                                        // bulan
+                                        $m = $today->diff($tanggal)->m;
+
+                                        $hasilBulan = ($y*12) + $m;
+
+                                        if( $hasilBulan > 120 ) {
                                             $x7 = 5;
-                                        } else if( $join['lama_peluncuran'] >= 91 && $join['lama_peluncuran'] <= 120 ) {
+                                        } else if( $hasilBulan >= 97 && $hasilBulan <= 120 ) {
                                             $x7 = 4;
-                                        } else if( $join['lama_peluncuran'] >= 61 && $join['lama_peluncuran'] <= 96 ) {
+                                        } else if( $hasilBulan >= 61 && $hasilBulan <= 96 ) {
                                             $x7 = 3;
-                                        } else if( $join['lama_peluncuran'] >= 24 && $join['lama_peluncuran'] <= 60 ) {
+                                        } else if( $hasilBulan >= 24 && $hasilBulan <= 60 ) {
                                             $x7 = 2;
-                                        } else if( $join['lama_peluncuran'] < 24 ) {
+                                        } else if( $hasilBulan < 24 ) {
                                             $x7 = 1;
                                         }
 
