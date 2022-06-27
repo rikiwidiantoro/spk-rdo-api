@@ -13,11 +13,11 @@
 
     $pdf->AddPage();
     $pdf->SetFont('Arial','B',14);
-    $pdf->Cell(280,10,'DAFTAR DATA ALTERNATIF REKSA DANA OBLIGASI',0,1,'C');
+    $pdf->Cell(280,15,'DAFTAR DATA ALTERNATIF REKSA DANA OBLIGASI',0,1,'C');
     
     
     $pdf->SetFont('Arial','I',10);
-    $pdf->Cell(60,7,'Tanggal update data : '.$tglUpdate,0,1);
+    $pdf->Cell(60,7,'Tanggal download data : '.$tglDownload,0,1);
     $pdf->SetFont('Arial','',10);
     $pdf->Cell(60,7,'Keterangan Total AUM : T = Trillion = Triliun',0,1);
     $pdf->Cell(60,5,'',0,1); 
@@ -45,7 +45,16 @@
         } else {
             $mataUang = 'Rp';
         }
-         
+
+        // lama peluncuran
+        $tanggal = new DateTime($data['lama_peluncuran']);
+        // tanggal hari ini
+        $today = new DateTime('today');
+        // tahun
+        $y = $today->diff($tanggal)->y;
+        // bulan
+        $m = $today->diff($tanggal)->m;
+        
         $pdf->Cell(17,9,'A'.$data['id_api'],1,0,'C');
         $pdf->Cell(73,9,$data['namaProduk'],1,0);
         $pdf->Cell(65,9,$data['mi'],1,0);
@@ -54,7 +63,7 @@
         $pdf->Cell(17,9,$data['drawdown']."%",1,0,'C');
         $pdf->Cell(25,9,$data['expense']."%",1,0,'C');
         $pdf->Cell(25,9,$mataUang ." ".$data['minbuy'],1,0,'R');
-        $pdf->Cell(30,9,round($data['lama_peluncuran']/12,0)." Tahun, ". $data['lama_peluncuran'] % 12 ." Bulan",1,1,'C');
+        $pdf->Cell(30,9,$y." Tahun, ".$m." Bulan",1,1,'C');
     }
 
     $pdf->SetTitle('Daftar Data Alternatif');
