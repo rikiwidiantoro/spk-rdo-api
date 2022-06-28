@@ -195,10 +195,10 @@
         </div>
         <div class="col m5 offset-m1">
             <div class="row">
-                <div class="col m6 offset-m2 ket">
+                <div class="col m6 offset-m1 ket">
                     <p>klik refresh 2X untuk mengambil data terbaru dari Bibit</p>
                 </div>
-                <div class="col m4">
+                <div class="col m5">
                     <button class="waves-effect right waves-light btn-small grey darken-1 reload" onClick="window.location.reload();"><i class="material-icons left">refresh</i>Refresh Data</button>
                 </div>
             </div>
