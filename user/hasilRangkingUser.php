@@ -39,13 +39,13 @@
 
 
     // new
-    $totalId = 30;
+    $totalId = 32;
     $joins = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
     
     // convert-alternatif
     foreach($joins as $join) {
         // kriteria1 = manajer investasi = x1
-        if( $join['mi'] == "Sucor Asset Management" || $join['mi'] == "Trimegah Asset Management" ) {
+        if( $join['mi'] == "Sucorinvest Asset Management, PT" || $join['mi'] == "Trimegah Asset Management, PT" ) {
             $x1 = 5;
         } else if( $join['mi'] == "Sinarmas Asset Management, PT" || $join['mi'] == "Eastspring Investments Indonesia, PT" ) {
             $x1 = 4;
@@ -155,7 +155,7 @@
     // ranking nilai v
     foreach($joinsss as $join) {
         // kriteria1 = manajer investasi = x1
-        if( $join['mi'] == "Sucor Asset Management" || $join['mi'] == "Trimegah Asset Management" ) {
+        if( $join['mi'] == "Sucorinvest Asset Management, PT" || $join['mi'] == "Trimegah Asset Management, PT" ) {
             $x1 = 5;
         } else if( $join['mi'] == "Sinarmas Asset Management, PT" || $join['mi'] == "Eastspring Investments Indonesia, PT" ) {
             $x1 = 4;
@@ -296,7 +296,15 @@
     <!-- css sendiri -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
     <style>
-        .pesan-update {
+        .reload {
+            margin-top: 40px;
+            margin-right: -50px;
+        }
+        .ket p {
+            margin-top: 35px;
+            text-align: right;
+        }
+        .pesan-update, .ket p {
             font-style: italic;
             font-size: 13px;
         }
@@ -354,6 +362,16 @@
             <div class="col">
                 <h4>Hasil Perangkingan</h4>
                 <hr>
+            </div>
+            <div class="col m5 offset-m2">
+                <div class="row">
+                    <div class="col m7 offset-m1 ket">
+                        <p>klik refresh 3X untuk hasil perhitungan berdasarkan data terbaru dari Bibit</p>
+                    </div>
+                    <div class="col m4">
+                        <button class="waves-effect right waves-light btn-small grey darken-1 reload" onClick="window.location.reload();"><i class="material-icons left">refresh</i>Refresh Data</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

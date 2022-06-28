@@ -53,7 +53,7 @@
     // new
     foreach($results as $hasil) {
         // inisialisasi
-        $totalId = 30;
+        $totalId = 32;
         $id = $hasil['id'];
         $namaProduk = $hasil['name'];
 
@@ -100,6 +100,14 @@
     
     <!-- css sendiri -->
     <style>
+        .reload {
+            margin-top: 40px;
+            margin-right: -10px;
+        }
+        .ket p {
+            margin-top: 35px;
+            text-align: right;
+        }
         .kriteria .tambah-kriteria {
             margin-top: 20px;
         }
@@ -115,7 +123,7 @@
         .con {
             padding: 2% 5%;
         }
-        .pesan-update {
+        .pesan-update, .ket p {
             font-style: italic;
             font-size: 13px;
         }
@@ -184,6 +192,16 @@
         <div class="col">
             <h4>Selamat Datang, <span><?= $user ?></span>!</h3>
             <hr>
+        </div>
+        <div class="col m5 offset-m1">
+            <div class="row">
+                <div class="col m6 offset-m2 ket">
+                    <p>klik refresh 2X untuk mengambil data terbaru dari Bibit</p>
+                </div>
+                <div class="col m4">
+                    <button class="waves-effect right waves-light btn-small grey darken-1 reload" onClick="window.location.reload();"><i class="material-icons left">refresh</i>Refresh Data</button>
+                </div>
+            </div>
         </div>
     </div>
     <!-- welcome -->

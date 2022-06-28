@@ -32,7 +32,7 @@ error_reporting(0);
 
     // api
     // $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=35');
-    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=30');
+    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=35');
     $contents = utf8_encode($contents);
     $result = json_decode($contents, 1);
 
@@ -63,6 +63,14 @@ error_reporting(0);
     
     <!-- css sendiri -->
     <style>
+        .reload {
+            margin-top: 40px;
+            margin-right: -50px;
+        }
+        .ket p {
+            margin-top: 35px;
+            text-align: right;
+        }
         .kriteria .tambah-kriteria {
             margin-top: 20px;
         }
@@ -78,7 +86,7 @@ error_reporting(0);
         .con {
             padding: 2% 4%;
         }
-        .pesan-update {
+        .pesan-update, .ket p {
             font-style: italic;
             font-size: 13px;
         }
@@ -143,8 +151,18 @@ error_reporting(0);
                 foreach($ucapan as $nama) {
                     echo $nama['nama'];
                 }
-            ?>!</h3>
+            ?>!</h4>
             <hr>
+        </div>
+        <div class="col m5 offset-m2">
+            <div class="row">
+                <div class="col m6 offset-m2 ket">
+                    <p>klik refresh 2X untuk mengambil data terbaru dari Bibit</p>
+                </div>
+                <div class="col m4">
+                    <button class="waves-effect right waves-light btn-small grey darken-1 reload" onClick="window.location.reload();"><i class="material-icons left">refresh</i>Refresh Data</button>
+                </div>
+            </div>
         </div>
     </div>
     <!-- welcome -->
@@ -307,7 +325,7 @@ error_reporting(0);
                             <?php
                                 foreach($results as $hasil) {
                                     // inisialisasi
-                                    $totalId = 30;
+                                    $totalId = 32;
                                     $id = $hasil['id'];
                                     $namaProduk = $hasil['name'];
 
