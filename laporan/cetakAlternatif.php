@@ -67,6 +67,7 @@
     }
 
     $pdf->SetTitle('Daftar Data Alternatif');
-    $pdf->Output('I','Data Alternatif Mei 2022.pdf');
+    $waktu = Date('d M Y', $tambah);
+    $pdf->Output('I','Data Alternatif '. $waktu .'.pdf');
 
 ?>

@@ -45,6 +45,7 @@
         $pdf->Cell(20,9,$i+=1,1,1,'C');
     }
     $pdf->SetTitle('Daftar Ranking');
-    $pdf->Output('I','Daftar Ranking Mei 2022.pdf');
+    $waktu = Date('d M Y', $tambah);
+    $pdf->Output('I','Daftar Ranking '. $waktu .'.pdf');
 
 ?>
