@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 
     // session
     session_start();
@@ -20,7 +19,7 @@ error_reporting(0);
     $ucapan = mysqli_query($koneksi, "SELECT * FROM login WHERE username = 'admin'");
 
     // query tabel fetch_api dan lama peluncuran
-    $join = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
+    $join = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN alternatif USING (id_api)");
 
 
     // mengambil jumlah data pada tabel fetch_api
@@ -270,7 +269,7 @@ error_reporting(0);
                                     
                                     echo "
                                     <tr>
-                                        <td class='center'>A". $fetch['id_api'] ."</td>
+                                        <td class='center'>". $fetch['no_alternatif'] ."</td>
                                         <td>". $fetch['namaProduk'] ."</td>
                                         <td>". $fetch['mi'] ."</td>
                                         <td class='center'>". $fetch['aum'] ." T</td>
@@ -311,9 +310,8 @@ error_reporting(0);
                     <table id="tabelAlternatifi" class="display" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Alternatif</th>
+                                <th>Id API</th>
                                 <th>Nama Produk</th>
-                                <th>Manager Investasi</th>
                                 <th>Total AUM</th>
                                 <th>CAGR</th>
                                 <th>Drawdown</th>
@@ -330,7 +328,6 @@ error_reporting(0);
                                     $namaProduk = $hasil['name'];
 
                                     // kriteria
-                                    $mi = $hasil['investment_manager']['name'];
                                     $totalAum = round($hasil['aum']['value'] / 1000000000000, 2); // triliun
                                     $cagr = round($hasil['cagr']['1y'] * 100, 2);
                                     $drawdown = round($hasil['maxdrawdown']['1y'] * 100, 2);
@@ -348,7 +345,6 @@ error_reporting(0);
                                     <tr>
                                         <td class='center'>". $id ."</td>
                                         <td>". $namaProduk ."</td>
-                                        <td>". $mi ."</td>
                                         <td class='center'>". $totalAum." T</td>
                                         <td class='center'>". $cagr."%</td>
                                         <td class='center'>". $drawdown."%</td>
@@ -359,7 +355,7 @@ error_reporting(0);
                                     ";
                                     if($totalId == $idd) {
                                         // echo '1';
-                                        $updateTabelFetchAPI = mysqli_query($koneksi, "UPDATE fetch_api SET namaProduk = '$namaProduk',mi = '$mi', aum = '$totalAum', cagr = '$cagr', drawdown = '$drawdown', expense = '$expenseRatio', minbuy = '$minBuy' WHERE id_api = '$id';");
+                                        $updateTabelFetchAPI = mysqli_query($koneksi, "UPDATE fetch_api SET namaProduk = '$namaProduk', aum = '$totalAum', cagr = '$cagr', drawdown = '$drawdown', expense = '$expenseRatio', minbuy = '$minBuy' WHERE id_api = '$id';");
                                     }
 
                                 }

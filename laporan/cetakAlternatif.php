@@ -35,7 +35,7 @@
 
 
 
-    $rangking = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
+    $rangking = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN alternatif USING (id_api)");
     $pdf->SetFont('Arial','',9);
     while($data = mysqli_fetch_array($rangking)) {
 
@@ -55,7 +55,7 @@
         // bulan
         $m = $today->diff($tanggal)->m;
         
-        $pdf->Cell(17,9,'A'.$data['id_api'],1,0,'C');
+        $pdf->Cell(17,9,$data['no_alternatif'],1,0,'C');
         $pdf->Cell(73,9,$data['namaProduk'],1,0);
         $pdf->Cell(65,9,$data['mi'],1,0);
         $pdf->Cell(20,9,$data['aum']." T",1,0,'C');

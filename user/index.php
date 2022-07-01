@@ -1,6 +1,5 @@
 <!-- koneksi -->
 <?php
-    error_reporting(0);
     // session
     session_start();
 
@@ -16,7 +15,7 @@
     $kriterias = mysqli_query($koneksi, "SELECT * FROM kriteria");
     // $alternatifs = mysqli_query($koneksi, "SELECT * FROM alternatif ORDER BY no_alternatif ASC");
 
-    $join = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
+    $join = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN alternatif USING (id_api)");
 
     // query untuk greeting atau ucapan selamat datang di dasboard
     // $ucapan = mysqli_query($koneksi, "SELECT * FROM login WHERE username != 'admin'");
@@ -36,7 +35,7 @@
     
     // api
     // $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=35');
-    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=17');
+    $contents = file_get_contents('https://bibit-reksadana.vercel.app/api/?types=fixed_income&buy_from_bibit=true&per_page=35');
     $contents = utf8_encode($contents);
     $result = json_decode($contents, 1);
 
@@ -58,10 +57,6 @@
         $namaProduk = $hasil['name'];
 
         // kriteria
-        $mi = $hasil['investment_manager']['name'];
-        // if($mi == null) {
-        //     $mi = null;
-        // }
         $totalAum = round($hasil['aum']['value'] / 1000000000000, 2); // triliun
         $cagr = round($hasil['cagr']['1y'] * 100, 2);
         $drawdown = round($hasil['maxdrawdown']['1y'] * 100, 2);
@@ -70,7 +65,7 @@
 
         if($totalId == $idd) {
             // echo '1';
-            $updateTabelFetchAPI = mysqli_query($koneksi, "UPDATE fetch_api SET namaProduk = '$namaProduk',mi = '$mi', aum = '$totalAum', cagr = '$cagr', drawdown = '$drawdown', expense = '$expenseRatio', minbuy = '$minBuy' WHERE id_api = '$id';");
+            $updateTabelFetchAPI = mysqli_query($koneksi, "UPDATE fetch_api SET namaProduk = '$namaProduk', aum = '$totalAum', cagr = '$cagr', drawdown = '$drawdown', expense = '$expenseRatio', minbuy = '$minBuy' WHERE id_api = '$id';");
         }
 
     }
@@ -297,7 +292,7 @@
 
                                     echo "
                                     <tr>
-                                        <td class='center'>A". $fetch['id_api'] ."</td>
+                                        <td class='center'>". $fetch['no_alternatif'] ."</td>
                                         <td>". $fetch['namaProduk'] ."</td>
                                         <td>". $fetch['mi'] ."</td>
                                         <td class='center'>". $fetch['aum'] ." T</td>

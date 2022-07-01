@@ -40,7 +40,7 @@
 
     // new
     $totalId = 32;
-    $joins = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
+    $joins = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN alternatif USING (id_api)");
     
     // convert-alternatif
     foreach($joins as $join) {
@@ -151,7 +151,7 @@
 
 
 
-    $joinsss = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
+    $joinsss = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN alternatif USING (id_api)");
     // ranking nilai v
     foreach($joinsss as $join) {
         // kriteria1 = manajer investasi = x1
@@ -254,7 +254,7 @@
             (($x1 / $max['maxK1']) * $bobot[0]) +
             (($x2 / $max['maxK2']) * $bobot[1]) +
             (($x3 / $max['maxK3']) * $bobot[2]) +
-            ((int) ($min['minK4'] / $x4) * $bobot[3]) +
+            (($min['minK4'] / $x4) * $bobot[3]) +
             (($min['minK5'] / $x5) * $bobot[4]) +
             (($min['minK6'] / $x6) * $bobot[5]) +
             (($x7 / $max['maxK7']) * $bobot[6]),2
@@ -263,13 +263,14 @@
         
         $iiii = $join['id_api'];
         // $totalId = 10;
+        $no_al = $join['no_alternatif'];
         $namaProduk = $join['namaProduk'];
         $kriteria1 = $join['mi'];
         
 
         if($totalId == $www) {
             // echo '1';
-            $updateNilaiPreferensi = mysqli_query($koneksi, "UPDATE rangking SET nama_produk = '$namaProduk', kriteria1 = '$kriteria1', nilai_preferensi = '$nilaiPreferensi' WHERE id_api = '$iiii';");
+            $updateNilaiPreferensi = mysqli_query($koneksi, "UPDATE rangking SET nama_produk = '$namaProduk', no_alternatif = '$no_al', kriteria1 = '$kriteria1', nilai_preferensi = '$nilaiPreferensi' WHERE id_api = '$iiii';");
         }
     }
 
@@ -416,7 +417,7 @@
                                 foreach($raking as $rank) {
                                     echo "
                                         <tr>
-                                            <td><b>". $rank['id_api'] ."</b></td>
+                                            <td><b>". $rank['no_alternatif'] ."</b></td>
                                             <td>". $rank['nama_produk'] ."</td>
                                             <td>". $rank['kriteria1'] ."</td>
                                             <td>". $rank['nilai_preferensi'] ."</td>
@@ -485,7 +486,7 @@
 
                                     echo "
                                         <tr>
-                                            <td><b>". $rank['id_api'] ."</b></td>
+                                            <td><b>". $rank['no_alternatif'] ."</b></td>
                                             <td>". $rank['nama_produk'] ."</td>
                                             <td>". $rank['kriteria1'] ."</td>
                                             <td>". $rank['nilai_preferensi'] ."</td>

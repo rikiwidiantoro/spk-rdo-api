@@ -22,9 +22,9 @@
 
 
     // new
-    $joins = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
-    $joinss = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
-    $joinsss = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN lama_peluncuran USING (id_api)");
+    $joins = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN alternatif USING (id_api)");
+    $joinss = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN alternatif USING (id_api)");
+    $joinsss = mysqli_query($koneksi, "SELECT * FROM fetch_api INNER JOIN alternatif USING (id_api)");
 
 
     // untuk pengkondisian tambah, update t.convert & t.rangking
@@ -194,7 +194,7 @@
                             <thead>
                                 <tr>
                                     <th>Alternatif</th>
-                                    <th>Manajer Investasi</th>
+                                    <th>Nama Produk</th>
                                     <!-- pengulangan nama kriteria dari tabel kriteria -->
                                     <?php
                                         foreach($kriterias as $kriteria) {
@@ -318,7 +318,7 @@
                 
                                         echo "
                                             <tr>
-                                                <td><b>A". $join['id_api'] ."</b></td>
+                                                <td><b>". $join['no_alternatif'] ."</b></td>
                                                 <td>". $join['namaProduk'] ."</td>
                                                 <td>". $x1 ."</td>
                                                 <td>". $x2 ."</td>
@@ -481,7 +481,7 @@
 
                                         echo "
                                             <tr>
-                                                <td><b>A". $join['id_api'] ."</b></td>
+                                                <td><b>". $join['no_alternatif'] ."</b></td>
                                                 <td>". round($x1 / $max['maxK1'],2)  ."</td>
                                                 <td>". round($x2 / $max['maxK2'],2)  ."</td>
                                                 <td>". round($x3 / $max['maxK3'],2)  ."</td>
@@ -643,6 +643,7 @@
 
                                         
                                         $iiii = $join['id_api'];
+                                        $no_al = $join['no_alternatif'];
                                         $namaProduk = $join['namaProduk'];
                                         $kriteria1 = $join['mi'];
                                         // $totalId = 10;
@@ -664,8 +665,8 @@
 
                                         echo "
                                             <tr>
-                                                <td><b>A". $join['id_api'] ."</b></td>
-                                                <td>". $join['mi'] ."</td>
+                                                <td><b>". $join['no_alternatif'] ."</b></td>
+                                                <td>". $join['namaProduk'] ."</td>
                                                 <td>". $nilaiPreferensi ."</td>
                                             </tr>
                                         ";
@@ -673,7 +674,7 @@
                                         // echo '<br>';
                                         if($totalId == $www) {
                                             // echo '1';
-                                            $updateNilaiPreferensi = mysqli_query($koneksi, "UPDATE rangking SET nama_produk = '$namaProduk', kriteria1 = '$kriteria1', nilai_preferensi = '$nilaiPreferensi' WHERE id_api = '$iiii';");
+                                            $updateNilaiPreferensi = mysqli_query($koneksi, "UPDATE rangking SET nama_produk = '$namaProduk', no_alternatif = '$no_al', kriteria1 = '$kriteria1', nilai_preferensi = '$nilaiPreferensi' WHERE id_api = '$iiii';");
                                         } 
                                         // else if($w < $www) {
                                         //     $hapusDataNilaiPreferensi = mysqli_query($koneksi, "DELETE FROM rangking WHERE no_alternatif = '$no_al'");
@@ -749,7 +750,7 @@
 
                                     echo "
                                         <tr>
-                                            <td><b>A". $rank['id_api'] ."</b></td>
+                                            <td><b>". $rank['no_alternatif'] ."</b></td>
                                             <td>". $rank['nama_produk'] ."</td>
                                             <td>". $rank['kriteria1'] ."</td>
                                             <td>". $rank['nilai_preferensi'] ."</td>
