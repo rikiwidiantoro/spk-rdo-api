@@ -57,7 +57,7 @@
         $namaProduk = $hasil['name'];
 
         // kriteria
-        $totalAum = round($hasil['aum']['value'] / 1000000000000, 2); // triliun
+        $totalAum = round($hasil['aum']['value'] / 1000000000, 2); // miliyar
         $cagr = round($hasil['cagr']['1y'] * 100, 2);
         $drawdown = round($hasil['maxdrawdown']['1y'] * 100, 2);
         $expenseRatio = round($hasil['expenseratio']['percentage'] * 100, 2);
@@ -295,7 +295,7 @@
                                         <td class='center'>". $fetch['no_alternatif'] ."</td>
                                         <td>". $fetch['namaProduk'] ."</td>
                                         <td>". $fetch['mi'] ."</td>
-                                        <td class='center'>". $fetch['aum'] ." T</td>
+                                        <td class='center'>". $fetch['aum'] ." B</td>
                                         <td class='center'>". $fetch['cagr'] ."%</td>
                                         <td class='center'>". $fetch['drawdown'] ."%</td>
                                         <td class='center'>". $fetch['expense'] ."%</td>

@@ -171,12 +171,12 @@
     <div id="kriteria" class="kriteria">
         <div class="container">
             <div class="row">
-                <div class="col m9">
+                <div class="col">
                     <h5>Tabel Kriteria</h5>
                 </div>
-                <div class="col m3">
+                <!-- <div class="col m3">
                     <a href="../crud/tambahKriteria.php" class="waves-effect right waves-light btn-small grey darken-1 tambah-kriteria"><i class="material-icons left">add</i>Tambah Kriteria</a>
-                </div>
+                </div> -->
             </div>
             <div class="row">
                 <div class="col m12">
@@ -201,7 +201,6 @@
                                         <td class='center'>". $kriteria['bobot_kriteria']."</td>
                                         <td class='center'>
                                             <a href='../crud/editKriteria.php?id=".$kriteria['id_kriteria']."' class='waves-effect waves-light btn-small grey darken-1'><i class='material-icons left'>create</i>Edit</a>
-                                            <a href='../crud/hapusKriteria.php?id=".$kriteria['id_kriteria']."' class='waves-effect waves-light btn-small grey darken-1'><i class='material-icons left'>delete</i>Hapus</a>
                                         </td>
                                     </tr>
                                     
@@ -272,7 +271,7 @@
                                         <td class='center'>". $fetch['no_alternatif'] ."</td>
                                         <td>". $fetch['namaProduk'] ."</td>
                                         <td>". $fetch['mi'] ."</td>
-                                        <td class='center'>". $fetch['aum'] ." T</td>
+                                        <td class='center'>". $fetch['aum'] ." B</td>
                                         <td class='center'>". $fetch['cagr'] ."%</td>
                                         <td class='center'>". $fetch['drawdown'] ."%</td>
                                         <td class='center'>". $fetch['expense'] ."%</td>
@@ -328,7 +327,7 @@
                                     $namaProduk = $hasil['name'];
 
                                     // kriteria
-                                    $totalAum = round($hasil['aum']['value'] / 1000000000000, 2); // triliun
+                                    $totalAum = round($hasil['aum']['value'] / 1000000000, 2); // miliyar
                                     $cagr = round($hasil['cagr']['1y'] * 100, 2);
                                     $drawdown = round($hasil['maxdrawdown']['1y'] * 100, 2);
                                     $expenseRatio = round($hasil['expenseratio']['percentage'] * 100, 2);
@@ -345,7 +344,7 @@
                                     <tr>
                                         <td class='center'>". $id ."</td>
                                         <td>". $namaProduk ."</td>
-                                        <td class='center'>". $totalAum." T</td>
+                                        <td class='center'>". $totalAum." B</td>
                                         <td class='center'>". $cagr."%</td>
                                         <td class='center'>". $drawdown."%</td>
                                         <td class='center'>". $expenseRatio."%</td>

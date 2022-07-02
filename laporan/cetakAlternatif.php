@@ -19,7 +19,7 @@
     $pdf->SetFont('Arial','I',10);
     $pdf->Cell(60,7,'Tanggal download data : '.$tglDownload,0,1);
     $pdf->SetFont('Arial','',10);
-    $pdf->Cell(60,7,'Keterangan Total AUM : T = Trillion = Triliun',0,1);
+    $pdf->Cell(60,7,'Keterangan Total AUM : B = Bilion = Milyar',0,1);
     $pdf->Cell(60,5,'',0,1); 
 
     $pdf->SetFont('Arial','B',9);
@@ -58,7 +58,7 @@
         $pdf->Cell(17,9,$data['no_alternatif'],1,0,'C');
         $pdf->Cell(73,9,$data['namaProduk'],1,0);
         $pdf->Cell(65,9,$data['mi'],1,0);
-        $pdf->Cell(20,9,$data['aum']." T",1,0,'C');
+        $pdf->Cell(20,9,$data['aum']." B",1,0,'C');
         $pdf->Cell(15,9,$data['cagr']."%",1,0,'C');
         $pdf->Cell(17,9,$data['drawdown']."%",1,0,'C');
         $pdf->Cell(25,9,$data['expense']."%",1,0,'C');

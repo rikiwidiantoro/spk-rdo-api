@@ -54,15 +54,15 @@
         }
 
         // kriteria2 = total AUM = x2
-        if( $join['aum'] > 1 ) {
+        if( $join['aum'] > 1000 ) {
             $x2 = 5;
-        } else if( $join['aum'] >= 0.50001 && $join['aum'] <= 1 ) {
+        } else if( $join['aum'] >= 500.01 && $join['aum'] <= 1000 ) {
             $x2 = 4;
-        } else if( $join['aum'] >= 0.20001 && $join['aum'] <= 0.500 ) {
+        } else if( $join['aum'] >= 200.01 && $join['aum'] <= 500 ) {
             $x2 = 3;
-        } else if( $join['aum'] >= 0.050 && $join['aum'] <= 0.200 ) {
+        } else if( $join['aum'] >= 50 && $join['aum'] <= 200 ) {
             $x2 = 2;
-        } else if( $join['aum'] < 0.050 ) {
+        } else if( $join['aum'] < 50 ) {
             $x2 = 1;
         }
 
@@ -164,15 +164,15 @@
         }
 
         // kriteria2 = total AUM = x2
-        if( $join['aum'] > 1 ) {
+        if( $join['aum'] > 1000 ) {
             $x2 = 5;
-        } else if( $join['aum'] >= 0.50001 && $join['aum'] <= 1 ) {
+        } else if( $join['aum'] >= 500.01 && $join['aum'] <= 1000 ) {
             $x2 = 4;
-        } else if( $join['aum'] >= 0.20001 && $join['aum'] <= 0.500 ) {
+        } else if( $join['aum'] >= 200.01 && $join['aum'] <= 500 ) {
             $x2 = 3;
-        } else if( $join['aum'] >= 0.050 && $join['aum'] <= 0.200 ) {
+        } else if( $join['aum'] >= 50 && $join['aum'] <= 200 ) {
             $x2 = 2;
-        } else if( $join['aum'] < 0.050 ) {
+        } else if( $join['aum'] < 50 ) {
             $x2 = 1;
         }
 
