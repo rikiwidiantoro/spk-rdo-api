@@ -1,8 +1,6 @@
 /* dekstop */
 @media screen and (min-width: 1024px) {
-	.navbar-fixed .brand-logo {
-        /* font-size: 10px; */
-    }
+	
     footer {
         padding: 20px 100px;
     }
@@ -21,6 +19,12 @@
     footer {
         padding: 20px 80px;
     }
+
+
+    /* data history */
+    .data-history {
+        font-size: 13px;
+    }
 }
 
 
@@ -31,10 +35,23 @@
 	.navbar-fixed .brand-logo {
         font-size: 17px;
     }
-    .data-pengunjung {
-        font-size: 12px;
-    }
     footer {
         padding: 20px 50px;
+    }
+
+
+
+
+    .data-history {
+        font-size: 10px;
+    }
+    .data-history tbody i {
+        display: none;
+    }
+    
+
+    /* data pengunjung */
+    .data-pengunjung {
+        font-size: 12px;
     }
 }

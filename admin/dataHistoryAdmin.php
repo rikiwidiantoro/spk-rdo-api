@@ -34,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     <!-- css sendiri -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <link rel="stylesheet" href="../responsive.css">
     <style>
         .data-history table a {
             color: #26a69a;
@@ -43,7 +44,7 @@
         }
         footer {
             margin-top: 20px;
-            padding: 20px 100px;
+            /* padding: 20px 100px; */
         }
         .footer-copyright {
             padding: 10px 85px;
@@ -96,7 +97,7 @@
 
 
     <!-- welcome -->
-    <div class="container">
+    <div class="container welcome">
         <div class="row">
             <div class="col">
                 <h4>Data History</h4>
@@ -166,12 +167,12 @@
     <!-- footer -->
     <footer class="grey darken-2 white-text">
         <div class="row">
-            <div class="col s7 offset-s1">
+            <div class="col l7 m12 s12 offset-l1">
                 <h6>Riki Widiantoro | Teknik Informatika</h6>
                 <p>Website Sistem Pendukung Keputusan Rekomendasi Produk Reksa Dana Obligasi Terbaik dengan Metode Simple Additive Weighting (SAW)</p>
                 <!-- <h6>&copy; 2022 | SKRIPSI</h6> -->
             </div>
-            <div class="col s2 offset-s1">
+            <div class="col l2 m12 s12 offset-l1">
                 <h6>Kontak Developer :</h6>
                 <div class="sosmed">
                     <p>
