@@ -1,0 +1,40 @@
+/* dekstop */
+@media screen and (min-width: 1024px) {
+	.navbar-fixed .brand-logo {
+        /* font-size: 10px; */
+    }
+    footer {
+        padding: 20px 100px;
+    }
+}
+
+
+
+
+
+
+/* tablet */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	.navbar-fixed .brand-logo {
+        font-size: 24px;
+    }
+    footer {
+        padding: 20px 80px;
+    }
+}
+
+
+
+
+/* smartphone */
+@media screen and (max-width: 767px) {
+	.navbar-fixed .brand-logo {
+        font-size: 17px;
+    }
+    .data-pengunjung {
+        font-size: 12px;
+    }
+    footer {
+        padding: 20px 50px;
+    }
+}
