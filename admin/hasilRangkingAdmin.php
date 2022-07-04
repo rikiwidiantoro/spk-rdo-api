@@ -79,6 +79,7 @@
 
     <!-- css sendiri -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <link rel="stylesheet" href="../responsive.css">
     <style>
         .reload {
             margin-top: 40px;
@@ -94,7 +95,6 @@
         }
         footer {
             margin-top: 100px;
-            padding: 20px 100px;
         }
         .footer-copyright {
             padding: 10px 85px;
@@ -149,7 +149,7 @@
                 <h4>Hasil Perangkingan</h4>
                 <hr>
             </div>
-            <div class="col m5 offset-m2">
+            <div class="col m5 s12 offset-m2">
                 <div class="row">
                     <div class="col m7 offset-m1 ket">
                         <p>klik refresh 3X untuk hasil perhitungan berdasarkan data terbaru dari Bibit</p>
@@ -169,7 +169,7 @@
     <div class="lihat-saw">
         <div class="container">
             <div class="row">
-                <div class="col m12 center">
+                <div class="col m12 s12 center">
                     <a class="waves-effect waves-light btn-small grey darken-1"><i class="material-icons left">keyboard_arrow_down</i><span>Lihat</span> SAW</a>
                 </div>
             </div>
@@ -360,12 +360,12 @@
         <div class="rij">
             <div class="container">
                 <div class="row">
-                    <div class="col m12">
+                    <div class="col m12 s12">
                         <h5>Tabel R</h5>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col m12">
+                    <div class="col m12 s12">
                         <table>
                             <thead>
                                 <tr>
@@ -713,7 +713,7 @@
     <div class="lihat-hasil">
         <div class="container">
             <div class="row">
-                <div class="col m12 center">
+                <div class="col m12 s12 center">
                     <a class="waves-effect waves-light btn-small grey darken-1 tambah-kriteria"><i class="material-icons left">keyboard_arrow_down</i><span>Lihat</span> Semua Hasil</a>
                 </div>
             </div>
@@ -774,12 +774,12 @@
     <!-- footer -->
     <footer class="grey darken-2 white-text">
         <div class="row">
-            <div class="col s7 offset-s1">
+            <div class="l7 m12 s12 offset-l1">
                 <h6>Riki Widiantoro | Teknik Informatika</h6>
                 <p>Website Sistem Pendukung Keputusan Rekomendasi Produk Reksa Dana Obligasi Terbaik dengan Metode Simple Additive Weighting (SAW)</p>
                 <!-- <h6>&copy; 2022 | SKRIPSI</h6> -->
             </div>
-            <div class="col s2 offset-s1">
+            <div class="col l2 m12 s12 offset-l1">
                 <h6>Kontak Developer :</h6>
                 <div class="sosmed">
                     <p>

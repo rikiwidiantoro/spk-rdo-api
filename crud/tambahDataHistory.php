@@ -137,6 +137,7 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Tambah Data History</title>
+        <link rel="stylesheet" href="../responsive.css">
     </head>
 
     <body>
@@ -156,13 +157,13 @@
         <!-- form -->
         <br>
         <div class="row center">
-            <div class="col s4 offset-s4">
+            <div class="col m4 s10 offset-m4">
                 <h4>Tambah Data History</h4>
                 <hr>
             </div>
         </div>
         <div class="row">
-            <div class="col s6 offset-s3 center">
+            <div class="col m6 s10 offset-m3 center">
                 <form action="" method="post" enctype="multipart/form-data">
                     <table>
                         <tr>

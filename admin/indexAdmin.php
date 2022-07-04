@@ -56,11 +56,12 @@
 
     <!-- library fontawesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-    
+    <link rel="stylesheet" href="../responsive.css">
     <!-- data tables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
     
     <!-- css sendiri -->
+    
     <style>
         .reload {
             margin-top: 40px;
@@ -82,16 +83,13 @@
         .kriteria table tbody a, .alternatif table tbody a, .kriteria .tambah-kriteria, .alternatif .tambah-alternatif {
             font-size: 11px;
         }
-        .con {
-            padding: 2% 4%;
-        }
+        
         .pesan-update, .ket p {
             font-style: italic;
             font-size: 13px;
         }
         footer {
             margin-top: 20px;
-            padding: 20px 100px;
         }
         .footer-copyright {
             padding: 10px 85px;
@@ -108,7 +106,47 @@
             margin: 20px auto;
             font-weight: 600;
         }
+        @media screen and (min-width: 1024px) {
+            .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
+                font-size: 14px;
+            }
+            .kriteria table {
+                font-size: 14px;
+            }
+            .con {
+                padding: 2% 4%;
+            }
+            .con table{
+                margin-left: 0px;
+            }
+        }
+        @media screen and (min-width: 768px) and (max-width: 1023px) {
+            .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
+                font-size: 10px;
+            }
+            .kriteria table {
+                font-size: 12px;
+            }
+            .con {
+                padding: 1% 2%;
+            }
+            .con table{
+                margin-left: -10px;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
+                font-size: 10px;
+            }
+            .con {
+                padding: 0% 1%;
+            }
+            .con table{
+                margin-left: -20px;
+            }
+        }
     </style>
+    
 </head>
 
 <body>
@@ -153,12 +191,12 @@
             ?>!</h4>
             <hr>
         </div>
-        <div class="col m5 offset-m2">
+        <div class="col l5 m12 offset-l2">
             <div class="row">
-                <div class="col m6 offset-m2 ket">
+                <div class="col l6 m8 s12 offset-l2 ket">
                     <p>klik refresh 2X untuk mengambil data terbaru dari Bibit</p>
                 </div>
-                <div class="col m4">
+                <div class="col l4 m6 s8">
                     <button class="waves-effect right waves-light btn-small grey darken-1 reload" onClick="window.location.reload();"><i class="material-icons left">refresh</i>Refresh Data</button>
                 </div>
             </div>
@@ -221,25 +259,25 @@
     <div id="alternatif" class="alternatif">
         <div class="con">
             <div class="row">
-                <div class="col m10">
+                <div class="col m10 s8">
                     <h5>Tabel Alternatif</h5>
                 </div>
-                <div class="col m2">
+                <div class="col m2 s4">
                     <a href="../laporan/cetakAlternatif.php" class="waves-effect right waves-light btn-small grey darken-1 tambah-alternatif" target="_blank"><i class="material-icons left">print</i>Cetak Alternatif</a>
                 </div>
             </div>
             <div class="row">
-                <div class="col m12">
+                <div class="col m12 s12">
                     <table id="tabelAlternatif" class="display" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Alternatif</th>
+                                <th>No</th>
                                 <th>Nama Produk</th>
                                 <!-- pengulangan nama kriteria dari tabel kriteria -->
                                 <?php
                                     foreach($kriterias as $kriteria) {
                                         echo "
-                                            <th>". $kriteria['nama_kriteria'] ."</th>
+                                            <th>". $kriteria['no_kriteria'] ."</th>
                                         ";
                                     }
                                 ?>
@@ -297,7 +335,7 @@
 
     <hr>
     <!-- tabel alternatif fetch api -->
-    <div id="alternatif" class="alternatif">
+    <div id="alternatif" class="alternatifi">
         <div class="con">
             <div class="row">
                 <div class="col m8">
@@ -305,7 +343,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col m12">
+                <div class="col m12 s12">
                     <table id="tabelAlternatifi" class="display" style="width:100%">
                         <thead>
                             <tr>
@@ -371,12 +409,12 @@
     <!-- footer -->
     <footer class="grey darken-2 white-text">
         <div class="row">
-            <div class="col m7 s12 offset-m1">
+            <div class="col l7 m12 s12 offset-l1">
                 <h6>Riki Widiantoro | Teknik Informatika</h6>
                 <p>Website Sistem Pendukung Keputusan Rekomendasi Produk Reksa Dana Obligasi Terbaik dengan Metode Simple Additive Weighting (SAW)</p>
                 <!-- <h6>&copy; 2022 | SKRIPSI</h6> -->
             </div>
-            <div class="col m2 s12 offset-m1">
+            <div class="col l2 m12 s12 offset-l1">
                 <h6>Kontak Developer :</h6>
                 <div class="sosmed">
                     <p>
