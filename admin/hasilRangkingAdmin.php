@@ -107,6 +107,21 @@
             margin: 20px auto;
             font-weight: 600;
         }
+        @media screen and (min-width: 1024px) {
+            .tabel-perhitungan table, .hasil-rangking table {
+                font-size: 14px;
+            }
+        }
+        @media screen and (min-width: 768px) and (max-width: 1023px) {
+            .tabel-perhitungan table, .hasil-rangking table {
+                font-size: 12px;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .tabel-perhitungan table, .hasil-rangking table {
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 
