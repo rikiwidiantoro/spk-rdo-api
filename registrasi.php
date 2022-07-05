@@ -89,6 +89,7 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Registrasi Pengunjung</title>
+        <link rel="stylesheet" href="responsive.css">
 
         <style>
             td input {
@@ -118,14 +119,14 @@
         <!-- form -->
         <br>
         <div class="row center">
-            <div class="col s4 offset-s4">
+            <div class="col l4 m6 s10 offset-l4 offset-m3 offset-s1">
                 <h5>Masukan data diri Anda dibawah!</h5>
                 <hr>
-                <p class="note">*note : jangan menggunakan simbol atau tanda petik!</p>
+                <p class="note">*note : jangan menggunakan tanda petik ('',"")!</p>
             </div>
         </div>
         <div class="row">
-            <div class="col s6 offset-s3 center">
+            <div class="col l6 m8 s10 offset-l3 offset-m2 offset-s1 center">
                 <form action="" method="post" enctype="multipart/form-data">
                     <table>
                         <tr>

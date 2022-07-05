@@ -102,9 +102,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Masuk</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+        <link rel="stylesheet" href="responsive.css">
         <style>
             h5 {
-                font-size: 30px;
+                
                 margin-top: 40px;
                 margin-bottom: 0px;
                 font-weight: 600;
@@ -117,7 +118,6 @@
             }
             footer {
                 margin-top: -8px;
-                padding: 10px 100px;
             }
             .footer-copyright {
                 margin-top: -10px;
@@ -126,6 +126,23 @@
             }
             footer a:hover, .isi a:hover {
                 text-decoration: underline;
+            }
+            @media screen and (min-width: 1024px) {
+                .isi h5 {
+                    font-size: 30px;
+                }
+            }
+            @media screen and (min-width: 768px) and (max-width: 1023px) {
+                .isi h5 {
+                    font-size: 25px;
+                    text-align: center;
+                }
+            }
+            @media screen and (max-width: 767px) {
+                .isi h5 {
+                    font-size: 20px;
+                    text-align: center;
+                }
             }
         </style>
     </head>
@@ -187,12 +204,12 @@
         <hr>
         <footer class="grey lighten-4 black-text">
             <div class="row">
-                <div class="col l7 offset-l1 m7 s12">
+                <div class="col l7 m12 s12 offset-l1">
                     <h6>Riki Widiantoro | Teknik Informatika</h6>
                     <p>Website Sistem Pendukung Keputusan Rekomendasi Produk Reksa Dana Obligasi Terbaik dengan Metode Simple Additive Weighting (SAW)</p>
                     <!-- <h6>&copy; 2022 | SKRIPSI</h6> -->
                 </div>
-                <div class="col l2 offset-l1 m5 s12">
+                <div class="col l2 m12 s12 offset-l1">
                     <h6>Kontak Developer :</h6>
                     <div class="sosmed">
                         <p>
