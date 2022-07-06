@@ -5,12 +5,7 @@
         padding: 20px 100px;
     }
 
-
 }
-
-
-
-
 
 
 /* tablet */
@@ -29,8 +24,6 @@
 }
 
 
-
-
 /* smartphone */
 @media screen and (max-width: 767px) {
 	.navbar-fixed .brand-logo {
@@ -40,8 +33,6 @@
         padding: 20px 50px;
     }
 
-
-    
 
     /* data history */
     .data-history {
