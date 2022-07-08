@@ -1,8 +1,14 @@
 /* dekstop */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1001px) {
 	
     footer {
         padding: 20px 100px;
+    }
+
+
+    /* hasil ranking */
+    .tabel-perhitungan table, .hasil-rangking table, .rank-lima table {
+        font-size: 14px;
     }
 
 }
@@ -18,6 +24,12 @@
     }
     footer {
         padding: 20px 80px;
+    }
+
+
+    /* hasil ranking */
+    .tabel-perhitungan table, .hasil-rangking table, .rank-lima table {
+        font-size: 12px;
     }
 
     /* data history */
@@ -40,6 +52,12 @@
     }
     footer p {
         font-size: 12px;
+    }
+
+
+    /* hasil ranking */
+    .tabel-perhitungan table, .hasil-rangking table, .rank-lima table {
+        font-size: 10px;
     }
 
 

@@ -109,7 +109,7 @@
         .alternatif .alternatiff{
             overflow-x: auto;
         }
-        @media screen and (min-width: 1024px) {
+        @media screen and (min-width: 1001px) {
             .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
                 font-size: 14px;
             }
@@ -123,12 +123,12 @@
                 margin-left: 0px;
             }
         }
-        @media screen and (min-width: 768px) and (max-width: 1023px) {
+        @media screen and (min-width: 601px) and (max-width: 1000px) {
             .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
                 font-size: 10px;
             }
             .kriteria table {
-                font-size: 11px;
+                font-size: 12px;
             }
             .con {
                 padding: 1% 2%;
@@ -137,12 +137,12 @@
                 margin-left: -10px;
             }
         }
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 600px) {
             .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
                 font-size: 10px;
             }
             .kriteria table {
-                font-size: 8px;
+                font-size: 10px;
             }
             .con {
                 padding: 0% 1%;

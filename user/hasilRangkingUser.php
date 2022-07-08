@@ -324,7 +324,7 @@
             margin: 20px auto;
             font-weight: 600;
         }
-        @media screen and (min-width: 1024px) {
+        /* @media screen and (min-width: 1024px) {
             .rank-lima table, .hasil-rangking table {
                 font-size: 14px;
             }
@@ -338,7 +338,7 @@
             .rank-lima table, .hasil-rangking table {
                 font-size: 10px;
             }
-        }
+        } */
     </style>
 </head>
 
