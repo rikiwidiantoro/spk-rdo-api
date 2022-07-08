@@ -106,6 +106,9 @@
             margin: 20px auto;
             font-weight: 600;
         }
+        .alternatif .alternatiff{
+            overflow-x: auto;
+        }
         @media screen and (min-width: 1024px) {
             .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
                 font-size: 14px;
@@ -125,7 +128,7 @@
                 font-size: 10px;
             }
             .kriteria table {
-                font-size: 12px;
+                font-size: 11px;
             }
             .con {
                 padding: 1% 2%;
@@ -137,6 +140,9 @@
         @media screen and (max-width: 767px) {
             .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
                 font-size: 10px;
+            }
+            .kriteria table {
+                font-size: 8px;
             }
             .con {
                 padding: 0% 1%;
@@ -182,7 +188,7 @@
 
 
     <!-- welcome -->
-    <div class="row container">
+    <div class="row container welcome">
         <div class="col">
             <h4>Selamat Datang, <?php 
                 foreach($ucapan as $nama) {
@@ -223,7 +229,7 @@
                             <tr>
                                 <th>Kriteria</th>
                                 <th>Nama Kriteria</th>
-                                <th>Cost/Benefit</th>
+                                <th>Cost / Benefit</th>
                                 <th>Bobot</th>
                                 <th>Aksi</th>
                             </tr>
@@ -266,7 +272,7 @@
                     <a href="../laporan/cetakAlternatif.php" class="waves-effect right waves-light btn-small grey darken-1 tambah-alternatif" target="_blank"><i class="material-icons left">print</i>Cetak Alternatif</a>
                 </div>
             </div>
-            <div class="row">
+            <div class="row alternatiff">
                 <div class="col m12 s12">
                     <table id="tabelAlternatif" class="display" style="width:100%">
                         <thead>
@@ -335,14 +341,14 @@
 
     <hr>
     <!-- tabel alternatif fetch api -->
-    <div id="alternatif" class="alternatifi">
+    <div id="alternatif" class="alternatifi alternatif">
         <div class="con">
             <div class="row">
                 <div class="col m8">
                     <h5>Tabel Data Hasil Fetch API</h5>
                 </div>
             </div>
-            <div class="row">
+            <div class="row alternatiff">
                 <div class="col m12 s12">
                     <table id="tabelAlternatifi" class="display" style="width:100%">
                         <thead>

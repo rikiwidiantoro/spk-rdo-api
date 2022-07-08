@@ -373,7 +373,7 @@
 
 
     <!-- welcome -->
-    <div class="container">
+    <div class="container welcome">
         <div class="row">
             <div class="col">
                 <h4>Hasil Perangkingan</h4>

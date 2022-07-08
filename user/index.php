@@ -148,6 +148,10 @@
             margin: 20px auto;
             font-weight: 600;
         }
+        .alternatif .alternatiff{
+            overflow-x: auto;
+        }
+        
         @media screen and (min-width: 1024px) {
             .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
                 font-size: 14px;
@@ -161,10 +165,18 @@
             .con table{
                 margin-left: 0px;
             }
+            /* table {
+                display: block;
+                max-width: -moz-fit-content;
+                max-width: fit-content;
+                margin: 0 auto;
+                overflow-x: auto;
+                white-space: nowrap;
+            } */
         }
         @media screen and (min-width: 768px) and (max-width: 1023px) {
             .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
-                font-size: 10px;
+                font-size: 12px;
             }
             .kriteria table {
                 font-size: 12px;
@@ -175,8 +187,36 @@
             .con table{
                 margin-left: -10px;
             }
+            /* #tabelAlternatif {
+                display: block;
+                max-width: -moz-fit-content;
+                max-width: fit-content;
+                margin: 0 auto;
+                overflow-x: auto;
+                white-space: nowrap;
+            } */
         }
         @media screen and (max-width: 767px) {
+            .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
+                font-size: 8px;
+            }
+            .con {
+                padding: 0% 1%;
+            }
+            .con table{
+                margin-left: -20px;
+            }
+            /* #tabelAlternatif {
+                display: block;
+                max-width: -moz-fit-content;
+                max-width: fit-content;
+                margin: 0 auto;
+                overflow-x: auto;
+                white-space: nowrap;
+            } */
+        }
+
+        /* @media screen and (max-width: 400px) {
             .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
                 font-size: 10px;
             }
@@ -186,7 +226,16 @@
             .con table{
                 margin-left: -20px;
             }
-        }
+            #tabelAlternatif {
+                display: block;
+                max-width: -moz-fit-content;
+                max-width: fit-content;
+                margin: 0 auto;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        } */
+        
     </style>
 </head>
 
@@ -222,12 +271,12 @@
 
 
     <!-- welcome -->
-    <div class="row container ucapanSelamat">
+    <div class="row container ucapanSelamat welcome">
         <div class="col">
             <h4>Selamat Datang, <span><?= $user ?></span>!</h3>
             <hr>
         </div>
-        <div class="col l5 m12 offset-l2">
+        <div class="col l5 m12 s12 offset-l1">
             <div class="row">
                 <div class="col l6 m8 s12 offset-l2 ket">
                     <p>klik refresh 2X untuk mengambil data terbaru dari Bibit</p>
@@ -292,7 +341,7 @@
                     <h5>Tabel Alternatif</h5>
                 </div>
             </div>
-            <div class="row">
+            <div class="row alternatiff">
                 <div class="col m12">
                     <table id="tabelAlternatif" class="display" style="width:100%">
                         <thead>
