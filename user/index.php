@@ -165,14 +165,6 @@
             .con table{
                 margin-left: 0px;
             }
-            /* table {
-                display: block;
-                max-width: -moz-fit-content;
-                max-width: fit-content;
-                margin: 0 auto;
-                overflow-x: auto;
-                white-space: nowrap;
-            } */
         }
         @media screen and (min-width: 601px) and (max-width: 1000px) {
             .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
@@ -187,14 +179,6 @@
             .con table{
                 margin-left: -10px;
             }
-            /* #tabelAlternatif {
-                display: block;
-                max-width: -moz-fit-content;
-                max-width: fit-content;
-                margin: 0 auto;
-                overflow-x: auto;
-                white-space: nowrap;
-            } */
         }
         @media screen and (max-width: 600px) {
             .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
@@ -209,36 +193,7 @@
             .con table{
                 margin-left: -20px;
             }
-            /* #tabelAlternatif {
-                display: block;
-                max-width: -moz-fit-content;
-                max-width: fit-content;
-                margin: 0 auto;
-                overflow-x: auto;
-                white-space: nowrap;
-            } */
-        }
-
-        /* @media screen and (max-width: 400px) {
-            .alternatif table td, .alternatif table th, .alternatifi table td, .alternatifi table th {
-                font-size: 10px;
-            }
-            .con {
-                padding: 0% 1%;
-            }
-            .con table{
-                margin-left: -20px;
-            }
-            #tabelAlternatif {
-                display: block;
-                max-width: -moz-fit-content;
-                max-width: fit-content;
-                margin: 0 auto;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-        } */
-        
+        }        
     </style>
 </head>
 
