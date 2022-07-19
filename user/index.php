@@ -58,7 +58,9 @@
 
         // kriteria
         $totalAum = round($hasil['aum']['value'] / 1000000000, 2); // miliyar
-        $cagr = round($hasil['cagr']['1y'] * 100, 2);
+        // $cagr = round($hasil['cagr']['1y'] * 100, 2);
+        // cagr adjusted
+        $cagr = round($hasil['cagr_adjusted']['1y'] * 100, 2);
         $drawdown = round($hasil['maxdrawdown']['1y'] * 100, 2);
         $expenseRatio = round($hasil['expenseratio']['percentage'] * 100, 2);
         $minBuy = $hasil['minbuy'];
