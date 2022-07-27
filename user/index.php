@@ -72,6 +72,11 @@
 
     }
 
+    if(isset($_POST['reset-bobot'])) {
+        echo "<script>
+            alert('ok');
+        </script>";
+    }
     
 ?>
 
@@ -254,8 +259,14 @@
     <div id="kriteria" class="kriteria">
         <div class="container">
             <div class="row">
-                <div class="col m9">
+                <div class="col m6 s6">
                     <h5>Tabel Kriteria</h5>
+                </div>
+                <div class="col m3 offset-m1 s3">
+                    <a href="../crud/defaultBobot.php" class="waves-effect right waves-light btn-small grey darken-1 reset-bobot"><i class="material-icons left">print</i>Default Bobot</a>
+                </div>
+                <div class="col m2 s3">
+                    <a href="../crud/resetBobot.php" class="waves-effect right waves-light btn-small grey darken-1 reset-bobot"><i class="material-icons left">print</i>Reset Bobot</a>
                 </div>
             </div>
             <div class="row">
