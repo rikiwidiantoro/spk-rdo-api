@@ -15,6 +15,18 @@
     $id = $_GET['id'];
     $tampilData = mysqli_query($koneksi, "SELECT * FROM kriteria WHERE id_kriteria = '$id';");
 
+    // bukan bobot
+    // $bukanBobot = mysqli_query($koneksi, "SELECT bobot FROM kriteria WHERE id_kriteria = '$id';");
+    // // while( $datas = mysqli_fetch_array($bukanBobot) ) {
+    // //     // $bobot = $datas;
+    // //     // echo $bobot;
+    // //     echo $datas;
+    // // }
+
+    // // var_dump($bukanBobot);
+
+
+
     // looping query data
     while( $dataKriteria = mysqli_fetch_array($tampilData) ) {
         $nomor = $dataKriteria['no_kriteria'];
@@ -58,6 +70,13 @@
         <title>Edit Data Kriteria</title>
 
         <link rel="stylesheet" href="../responsive.css">
+        <style>
+            form .pesan-update {
+                font-style: italic;
+                font-size: 13px;
+                text-align: left !important;
+            }
+        </style>
     </head>
 
     <body>
@@ -107,7 +126,8 @@
                             <td><input type="number" name="bobot" value="<?= $bobot ?>" autocomplete="off" min="0" max="100"></td>
                         </tr>
                     </table>
-                    <br>
+                    <span class="pesan-update">*Data Bobot harus bernilai 0 sampai 100.</span>
+                    <br><br>
                     <button class="btn grey darken-2 waves-effect waves-light" type="submit" name="submit">Edit Data
                         <i class="material-icons right">send</i>
                     </button>

@@ -279,6 +279,17 @@
     $rangking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi + 0 DESC");
     $raking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi + 0 DESC LIMIT 5");
 
+
+    // total bobot
+    $bobotss = mysqli_query($koneksi, "SELECT bobot_kriteria FROM kriteria");
+    $bobott = array();
+    foreach($bobotss as $bo) {
+        array_push($bobott, $bo['bobot_kriteria']);
+        
+    }
+    $totalBobot = $bobott[0] + $bobott[1] + $bobott[2] + $bobott[3] + $bobott[4] + $bobott[5] + $bobott[6];
+    echo $totalBobot;
+
 ?>
 
 <!DOCTYPE html>
@@ -412,6 +423,7 @@
 
     <!-- ranking 5 terbaik -->
     <div class="rank-lima">
+        <?php if($totalBobot == 100) { ?>
         <div class="container">
             <div class="row">
                 <div class="col m12">
@@ -450,6 +462,9 @@
                 </div>
             </div>
         </div>
+        <?php } else { ?>
+            <h5 class='center' rowspan='5'><b>Total Bobot harus pada tabel kriteria 100, Total Bobot saat ini <?= $totalBobot ?>, mohon untuk mengubah bobot!</b></h5>
+        <?php } ?>
     </div>
     <!-- ranking 5 terbaik -->
 
@@ -471,6 +486,7 @@
 
     <!-- rangking -->
     <div class="hasil-rangking">
+        <?php if($totalBobot == 100) { ?>
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -494,7 +510,6 @@
                             <?php
                                 // $rangking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi DESC");
                                 $i = 1;
-                                // $rangking = get_values();
                                 foreach($rangking as $rank) {
                                     // for($i=1; $i<5;$i++) {
                                     //     global $i;
@@ -512,7 +527,6 @@
                                     ";
                                     
                                 }
-                                
                             ?>
                             
                             
@@ -522,6 +536,9 @@
             </div>
             <span class="pesan-update">*Data up to date karena menggunakan Public API dari Bibit.</span>
         </div>
+        <?php } else { ?>
+            <h6 class='center' rowspan='5'><b>Jumlah Bobot pada tabel kriteria harus 100, Jumlah Bobot saat ini <?= $totalBobot ?>, <br> Mohon untuk mengubah jumlah bobot menjadi 100!</b></h6>
+        <?php } ?>
     </div>
     <!-- rangking -->
 

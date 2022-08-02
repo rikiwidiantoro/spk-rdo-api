@@ -77,6 +77,17 @@
             alert('ok');
         </script>";
     }
+
+
+    // total bobot
+    $bobots = mysqli_query($koneksi, "SELECT bobot_kriteria FROM kriteria");
+    $bobot = array();
+    foreach($bobots as $bo) {
+        array_push($bobot, $bo['bobot_kriteria']);
+        
+    }
+    $totalBobot = $bobot[0] + $bobot[1] + $bobot[2] + $bobot[3] + $bobot[4] + $bobot[5] + $bobot[6];
+    echo $totalBobot;
     
 ?>
 
@@ -298,6 +309,10 @@
                                     ";
                                 }
                             ?>
+                            <tr>
+                                <td colspan='3' class='center'>Jumlah Bobot</td>
+                                <td rowspan='2' class='center'><?= $totalBobot ?></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
