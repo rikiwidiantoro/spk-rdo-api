@@ -267,6 +267,7 @@
         $namaProduk = $join['namaProduk'];
         $kriteria1 = $join['mi'];
         
+        // echo (int)$nilaiPreferensi;
 
         if($totalId == $www) {
             // echo '1';
@@ -275,8 +276,8 @@
     }
 
 
-    $rangking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi DESC");
-    $raking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi DESC LIMIT 5");
+    $rangking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi + 0 DESC");
+    $raking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi + 0 DESC LIMIT 5");
 
 ?>
 
@@ -493,6 +494,7 @@
                             <?php
                                 // $rangking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi DESC");
                                 $i = 1;
+                                // $rangking = get_values();
                                 foreach($rangking as $rank) {
                                     // for($i=1; $i<5;$i++) {
                                     //     global $i;

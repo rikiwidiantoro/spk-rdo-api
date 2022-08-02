@@ -104,7 +104,7 @@
                         </tr>
                         <tr>
                             <td>Bobot</td>
-                            <td><input type="number" name="bobot" value="<?= $bobot ?>" autocomplete="off"></td>
+                            <td><input type="number" name="bobot" value="<?= $bobot ?>" autocomplete="off" min="0" max="100"></td>
                         </tr>
                     </table>
                     <br>
