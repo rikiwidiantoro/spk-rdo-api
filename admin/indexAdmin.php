@@ -38,6 +38,17 @@
     // var_dump($result);
     $results = $result['data'];
 
+
+     // total bobot
+     $bobots = mysqli_query($koneksi, "SELECT bobot_kriteria FROM kriteria");
+     $bobot = array();
+     foreach($bobots as $bo) {
+         array_push($bobot, $bo['bobot_kriteria']);
+         
+     }
+     $totalBobot = $bobot[0] + $bobot[1] + $bobot[2] + $bobot[3] + $bobot[4] + $bobot[5] + $bobot[6];
+     // echo $totalBobot;
+
 ?>
 
 <!DOCTYPE html>
@@ -215,12 +226,15 @@
     <div id="kriteria" class="kriteria">
         <div class="container">
             <div class="row">
-                <div class="col">
+            <div class="col m6 s6">
                     <h5>Tabel Kriteria</h5>
                 </div>
-                <!-- <div class="col m3">
-                    <a href="../crud/tambahKriteria.php" class="waves-effect right waves-light btn-small grey darken-1 tambah-kriteria"><i class="material-icons left">add</i>Tambah Kriteria</a>
-                </div> -->
+                <div class="col m3 offset-m1 s3">
+                    <a href="../crud/defaultBobotAdmin.php" class="waves-effect right waves-light btn-small grey darken-1 reset-bobot"><i class="material-icons left">print</i>Default Bobot</a>
+                </div>
+                <div class="col m2 s3">
+                    <a href="../crud/resetBobotAdmin.php" class="waves-effect right waves-light btn-small grey darken-1 reset-bobot"><i class="material-icons left">print</i>Reset Bobot</a>
+                </div>
             </div>
             <div class="row">
                 <div class="col m12">
@@ -251,6 +265,10 @@
                                     ";
                                 }
                             ?>
+                            <tr>
+                                <td colspan='3' class='center'>Jumlah Bobot</td>
+                                <td rowspan='2' class='center'><?= $totalBobot ?></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -45,6 +45,10 @@
         array_push($bobot, $bo['bobot_kriteria']);
         
     }
+
+    // total bobot
+    $totalBobot = $bobot[0] + $bobot[1] + $bobot[2] + $bobot[3] + $bobot[4] + $bobot[5] + $bobot[6];
+
     // echo $bobot[0] . '<br>';
     // echo $bobot[1] . '<br>';
     // echo $bobot[2] . '<br>';
@@ -60,6 +64,7 @@
     $nMin = mysqli_query($koneksi, "SELECT min(kriteria4) as minK4, min(kriteria5) as minK5, min(kriteria6) as minK6 FROM convert_alternatif");
     $max = mysqli_fetch_array($nMax);
     $min = mysqli_fetch_array($nMin);
+
 
 ?>
 
@@ -195,6 +200,7 @@
 
     <!-- tabel perhitungan -->
     <div class="tabel-perhitungan">
+        <?php if($totalBobot == 100) { ?>
         <!-- matriks X -->
         <div class="matriksX">
             <div class="container">
@@ -719,6 +725,9 @@
             </div>
         </div>
         <!-- rij -->
+        <?php } else { ?>
+            <h6 class='center' rowspan='5'><b>Jumlah Bobot pada tabel kriteria harus 100, Jumlah Bobot saat ini <?= $totalBobot ?>, <br> Mohon untuk mengubah jumlah bobot menjadi 100!</b></h6>
+        <?php } ?>
     </div>
     <!-- tabel perhitungan -->
     
@@ -739,6 +748,7 @@
 
     <!-- rangking -->
     <div class="hasil-rangking">
+        <?php if($totalBobot == 100) { ?>
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -782,6 +792,9 @@
             </div>
             <span class="pesan-update">*Data up to date karena menggunakan Public API dari Bibit.</span>
         </div>
+        <?php } else { ?>
+            <h6 class='center' rowspan='5'><b>Jumlah Bobot pada tabel kriteria harus 100, Jumlah Bobot saat ini <?= $totalBobot ?>, <br> Mohon untuk mengubah jumlah bobot menjadi 100!</b></h6>
+        <?php } ?>
     </div>
     <!-- rangking -->
 

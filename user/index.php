@@ -87,7 +87,7 @@
         
     }
     $totalBobot = $bobot[0] + $bobot[1] + $bobot[2] + $bobot[3] + $bobot[4] + $bobot[5] + $bobot[6];
-    echo $totalBobot;
+    // echo $totalBobot;
     
 ?>
 

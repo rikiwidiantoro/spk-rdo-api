@@ -22,6 +22,10 @@
         array_push($bobot, $bo['bobot_kriteria']);
         
     }
+
+    // total bobot
+    $totalBobot = $bobot[0] + $bobot[1] + $bobot[2] + $bobot[3] + $bobot[4] + $bobot[5] + $bobot[6];
+
     
     $nMax = mysqli_query($koneksi, "SELECT max(kriteria1) as maxK1, max(kriteria2) as maxK2, max(kriteria3) as maxK3, max(kriteria7) as maxK7 FROM convert_alternatif");
     $nMin = mysqli_query($koneksi, "SELECT min(kriteria4) as minK4, min(kriteria5) as minK5, min(kriteria6) as minK6 FROM convert_alternatif");
@@ -280,16 +284,6 @@
     $raking = mysqli_query($koneksi, "SELECT * FROM rangking ORDER BY nilai_preferensi + 0 DESC LIMIT 5");
 
 
-    // total bobot
-    $bobotss = mysqli_query($koneksi, "SELECT bobot_kriteria FROM kriteria");
-    $bobott = array();
-    foreach($bobotss as $bo) {
-        array_push($bobott, $bo['bobot_kriteria']);
-        
-    }
-    $totalBobot = $bobott[0] + $bobott[1] + $bobott[2] + $bobott[3] + $bobott[4] + $bobott[5] + $bobott[6];
-    echo $totalBobot;
-
 ?>
 
 <!DOCTYPE html>
@@ -463,7 +457,7 @@
             </div>
         </div>
         <?php } else { ?>
-            <h5 class='center' rowspan='5'><b>Total Bobot harus pada tabel kriteria 100, Total Bobot saat ini <?= $totalBobot ?>, mohon untuk mengubah bobot!</b></h5>
+            <h6 class='center' rowspan='5'><b>Jumlah Bobot pada tabel kriteria harus 100, Jumlah Bobot saat ini <?= $totalBobot ?>, <br> Mohon untuk mengubah jumlah bobot menjadi 100!</b></h6>
         <?php } ?>
     </div>
     <!-- ranking 5 terbaik -->
