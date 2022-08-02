@@ -442,7 +442,7 @@
                                             <td><b>". $rank['no_alternatif'] ."</b></td>
                                             <td>". $rank['nama_produk'] ."</td>
                                             <td>". $rank['kriteria1'] ."</td>
-                                            <td>". $rank['nilai_preferensi'] ."</td>
+                                            <td>". $rank['nilai_preferensi'] ."%</td>
                                             <td>". $j++ ."</td>
                                         </tr>
                                     ";
@@ -457,7 +457,7 @@
             </div>
         </div>
         <?php } else { ?>
-            <h6 class='center' rowspan='5'><b>Jumlah Bobot pada tabel kriteria harus 100, Jumlah Bobot saat ini <?= $totalBobot ?>, <br> Mohon untuk mengubah jumlah bobot menjadi 100!</b></h6>
+            <h6 class='center' rowspan='5'><b>Jumlah Bobot pada tabel kriteria harus 100%, Jumlah Bobot saat ini <?= $totalBobot ?>%, <br> Mohon untuk mengubah jumlah bobot menjadi 100%!</b></h6>
         <?php } ?>
     </div>
     <!-- ranking 5 terbaik -->
@@ -515,7 +515,7 @@
                                             <td><b>". $rank['no_alternatif'] ."</b></td>
                                             <td>". $rank['nama_produk'] ."</td>
                                             <td>". $rank['kriteria1'] ."</td>
-                                            <td>". $rank['nilai_preferensi'] ."</td>
+                                            <td>". $rank['nilai_preferensi'] ."%</td>
                                             <td>". $i++ ."</td>
                                         </tr>
                                     ";
@@ -531,7 +531,7 @@
             <span class="pesan-update">*Data up to date karena menggunakan Public API dari Bibit.</span>
         </div>
         <?php } else { ?>
-            <h6 class='center' rowspan='5'><b>Jumlah Bobot pada tabel kriteria harus 100, Jumlah Bobot saat ini <?= $totalBobot ?>, <br> Mohon untuk mengubah jumlah bobot menjadi 100!</b></h6>
+            <h6 class='center' rowspan='5'><b>Jumlah Bobot pada tabel kriteria harus 100%, Jumlah Bobot saat ini <?= $totalBobot ?>%, <br> Mohon untuk mengubah jumlah bobot menjadi 100%!</b></h6>
         <?php } ?>
     </div>
     <!-- rangking -->

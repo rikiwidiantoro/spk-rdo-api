@@ -41,7 +41,7 @@
         
         $pdf->Cell(20,9,$data['no_alternatif'],1,0,'C');
         $pdf->Cell(90,9,$data['nama_produk'],1,0);
-        $pdf->Cell(30,9,$data['nilai_preferensi'],1,0,'C');
+        $pdf->Cell(30,9,$data['nilai_preferensi'].'%',1,0,'C');
         $pdf->Cell(20,9,$i+=1,1,1,'C');
     }
     $pdf->SetTitle('Daftar Ranking');

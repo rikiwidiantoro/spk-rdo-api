@@ -288,7 +288,7 @@
                                 <th>Kriteria</th>
                                 <th>Nama Kriteria</th>
                                 <th>Cost/Benefit</th>
-                                <th>Bobot</th>
+                                <th>Bobot (%)</th>
                                 <th>Edit Bobot</th>
                             </tr>
                         </thead>
@@ -300,7 +300,7 @@
                                         <td class='center'>". $kriteria['no_kriteria'] ."</td>
                                         <td>". $kriteria['nama_kriteria'] ."</td>
                                         <td class='center'>". $kriteria['cost_benefit'] ."</td>
-                                        <td class='center'>". $kriteria['bobot_kriteria']."</td>
+                                        <td class='center'>". $kriteria['bobot_kriteria']."%</td>
                                         <td class='center'>
                                             <a href='../crud/editKriteriaUser.php?id=".$kriteria['id_kriteria']."' class='waves-effect waves-light btn-small grey darken-1'><i class='material-icons left'>create</i>Edit</a>
                                         </td>
@@ -311,7 +311,7 @@
                             ?>
                             <tr>
                                 <td colspan='3' class='center'>Jumlah Bobot</td>
-                                <td rowspan='2' class='center'><?= $totalBobot ?></td>
+                                <td rowspan='2' class='center'><?= $totalBobot ?>%</td>
                             </tr>
                         </tbody>
                     </table>
